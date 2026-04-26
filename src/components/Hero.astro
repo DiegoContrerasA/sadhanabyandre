@@ -1,0 +1,101 @@
+---
+import { Image } from 'astro:assets';
+import heroImg from '../assets/images/hero.jpg';
+---
+
+<section class="relative w-full h-dvh min-h-[580px] overflow-hidden">
+
+  <!-- Background image -->
+  <Image
+    src={heroImg}
+    alt="Sadhana by Andre — práctica de yoga"
+    class="absolute inset-0 w-full h-full object-cover object-[center_20%] z-0 scale-[1.04] animate-[heroZoom_14s_ease-out_forwards]"
+    widths={[640, 1024, 1600]}
+    sizes="100vw"
+    loading="eager"
+    fetchpriority="high"
+  />
+
+  <!-- Overlay -->
+  <div
+    class="absolute inset-0 z-10"
+    style="background: linear-gradient(110deg, rgba(20,8,16,0.72) 0%, rgba(20,8,16,0.38) 50%, rgba(20,8,16,0.12) 100%), linear-gradient(to top, rgba(20,8,16,0.55) 0%, transparent 45%)"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Content -->
+  <div class="relative z-20 flex flex-col justify-between h-full px-8 py-12 md:px-16 md:py-14 lg:px-20">
+
+    <!-- Top block -->
+    <div class="max-w-2xl animate-[fadeUp_1s_cubic-bezier(0.22,1,0.36,1)_0.2s_both]">
+
+      <p class="text-[0.7rem] tracking-[0.22em] uppercase text-primary-light/50 mb-5 font-light">
+        Sadhana by Andre
+      </p>
+
+      <h1 class="font-light leading-[1.02] tracking-tight text-primary-light mb-5" style="font-size: clamp(3rem, 9vw, 7rem)">
+        <span class="block">Encuentra <span class="text-secondary">—</span> Tu</span>
+        <span class="block">Paz Interior</span>
+      </h1>
+
+      <p class="text-primary-light/70 font-light leading-relaxed max-w-sm mb-8" style="font-size: clamp(0.8rem, 1.4vw, 0.95rem)">
+        Ya sea que estés comenzando o profundizando tu práctica, únete a nuestra comunidad
+        para un camino revitalizante hacia el bienestar.
+      </p>
+
+      <div class="flex items-center gap-3">
+        <a
+          href="#reserva"
+          class="inline-flex items-center px-7 py-3 rounded-full border border-primary-light/35 bg-primary-light/[0.08] backdrop-blur-md text-primary-light text-sm tracking-wide transition-all duration-200 hover:bg-primary-light/[0.18] hover:border-primary-light/60 whitespace-nowrap"
+        >
+          Reserva tu Clase
+        </a>
+
+        <a
+          href="#reserva"
+          aria-label="Reserva tu clase"
+          class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-primary-light/35 bg-primary-light/[0.08] backdrop-blur-md text-primary-light transition-all duration-200 hover:bg-primary hover:border-primary hover:[&>svg]:rotate-45 flex-shrink-0"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" class="transition-transform duration-200">
+            <path d="M3.75 14.25L14.25 3.75M14.25 3.75H6.75M14.25 3.75V11.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="flex items-center gap-6 md:gap-10 animate-[fadeUp_1s_cubic-bezier(0.22,1,0.36,1)_0.5s_both]">
+
+      <div class="flex flex-col gap-1">
+        <span class="text-primary-light font-light leading-none tracking-tight" style="font-size: clamp(1.6rem, 4vw, 2.4rem)">500+</span>
+        <span class="text-[0.65rem] md:text-[0.72rem] tracking-[0.06em] uppercase text-primary-light/55 font-light">Alumnos Felices</span>
+      </div>
+
+      <div class="w-px h-10 bg-primary-light/20 flex-shrink-0" aria-hidden="true"></div>
+
+      <div class="flex flex-col gap-1">
+        <span class="text-primary-light font-light leading-none tracking-tight" style="font-size: clamp(1.6rem, 4vw, 2.4rem)">20+</span>
+        <span class="text-[0.65rem] md:text-[0.72rem] tracking-[0.06em] uppercase text-primary-light/55 font-light">Clases al Mes</span>
+      </div>
+
+      <div class="w-px h-10 bg-primary-light/20 flex-shrink-0" aria-hidden="true"></div>
+
+      <div class="flex flex-col gap-1">
+        <span class="text-primary-light font-light leading-none tracking-tight" style="font-size: clamp(1.6rem, 4vw, 2.4rem)">98%</span>
+        <span class="text-[0.65rem] md:text-[0.72rem] tracking-[0.06em] uppercase text-primary-light/55 font-light">Satisfacción</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes heroZoom {
+    from { transform: scale(1.04); }
+    to   { transform: scale(1); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
