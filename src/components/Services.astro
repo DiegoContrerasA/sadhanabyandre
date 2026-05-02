@@ -10,6 +10,7 @@ const servicios = [
   {
     id: 'grupal',
     nombre: 'Yoga Grupal',
+    alt: 'Clase grupal de yoga con Andre, instructora certificada',
     img: imgGrupal,
     duracion: '60 min',
     nivel: 'Todos los niveles',
@@ -20,6 +21,7 @@ const servicios = [
   {
     id: 'personalizado',
     nombre: 'Yoga Personalizado',
+    alt: 'Sesión de yoga personalizado adaptada a tus necesidades',
     img: imgPersonal,
     duracion: '75 min',
     nivel: 'Adaptado a ti',
@@ -30,6 +32,7 @@ const servicios = [
   {
     id: 'prenatal',
     nombre: 'Yoga Prenatal',
+    alt: 'Yoga prenatal suave para embarazadas, clase con Andre',
     img: imgPrenatal,
     duracion: '60 min',
     nivel: 'Embarazadas',
@@ -40,6 +43,7 @@ const servicios = [
   {
     id: 'postparto',
     nombre: 'Yoga Post Parto',
+    alt: 'Yoga post parto para recuperación y reconexión después del nacimiento',
     img: imgPostParto,
     duracion: '60 min',
     nivel: 'Post maternidad',
@@ -50,6 +54,7 @@ const servicios = [
   {
     id: 'facial',
     nombre: 'Yoga Facial',
+    alt: 'Yoga facial con ejercicios y masajes para tonificar el rostro',
     img: imgFacial,
     duracion: '45 min',
     nivel: 'Todos los niveles',
@@ -60,7 +65,7 @@ const servicios = [
 ];
 ---
 
-<section class="bg-[#0f0812] px-8 py-20 md:px-16 md:py-28 lg:px-20">
+<section id="servicios" class="bg-[#0f0812] px-8 py-20 md:px-16 md:py-28 lg:px-20">
 
   <!-- Header -->
   <div class="max-w-2xl mb-14">
@@ -88,7 +93,7 @@ const servicios = [
         <!-- Image -->
         <Image
           src={s.img}
-          alt={s.nombre}
+          alt={s.alt}
           class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.04]"
           widths={[400, 700]}
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
