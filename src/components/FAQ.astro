@@ -1,0 +1,117 @@
+---
+const faqs = [
+  {
+    pregunta: "¿Necesito experiencia previa para comenzar?",
+    respuesta: "No. Todas mis clases están diseñadas para recibir a personas de cualquier nivel. Si es tu primera vez, simplemente avísame antes de comenzar y adapto la práctica a ti.",
+  },
+  {
+    pregunta: "¿Qué debo llevar a mi primera clase?",
+    respuesta: "Ropa cómoda que permita movimiento, agua y ganas de estar presente. Los tapetes están disponibles en el espacio, aunque si tienes el tuyo propio puedes traerlo.",
+  },
+  {
+    pregunta: "¿Cómo funciona el masaje Kobido?",
+    respuesta: "El Kobido es una sesión facial de 60 minutos donde trabajo con 47 movimientos de presión y percusión sobre los músculos del rostro. No usa inyecciones ni aparatos: solo manos expertas y aceites naturales.",
+  },
+  {
+    pregunta: "¿Las clases en línea son igual de efectivas?",
+    respuesta: "Sí. Las clases virtuales tienen la misma estructura y atención personalizada que las presenciales. Solo necesitas un espacio tranquilo, conexión estable y tu tapete.",
+  },
+  {
+    pregunta: "¿Con qué frecuencia debería practicar?",
+    respuesta: "Con dos veces por semana comienzas a sentir cambios reales. Lo más importante es la constancia, no la cantidad. Encontramos juntas el ritmo que encaja con tu vida.",
+  },
+  {
+    pregunta: "¿Puedo cancelar mi reserva?",
+    respuesta: "Sí, puedes cancelar hasta 12 horas antes de la clase sin ningún costo. Para cancelaciones tardías o ausencias, te pido avisarme por WhatsApp.",
+  },
+];
+---
+
+<section id="faq" class="bg-[var(--color-primary-light)] px-6 md:px-12 py-24 md:py-32">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Top divider -->
+    <div class="w-px h-16 bg-[var(--color-primary)]/25 mx-auto mb-16"></div>
+
+    <!-- Header -->
+    <div class="text-center mb-16" data-animate>
+      <p class="[font-family:var(--font-body)] text-[0.65rem] tracking-[0.35em] uppercase text-[var(--color-primary)] mb-4">
+        Preguntas Frecuentes
+      </p>
+      <h2 class="[font-family:var(--font-heading)] text-4xl md:text-5xl lg:text-6xl font-light text-[var(--color-dark)]">
+        Todo lo que<br />
+        <em class="italic text-[var(--color-primary)]">necesitas saber</em>
+      </h2>
+    </div>
+
+    <!-- Accordion -->
+    <div>
+      {faqs.map((faq, i) => (
+        <div class="faq-item border-b border-[var(--color-dark)]/10" data-animate data-delay={String(i * 75)}>
+          <button
+            class="faq-trigger w-full flex items-center justify-between py-6 text-left gap-4 group"
+            aria-expanded="false"
+          >
+            <span class="[font-family:var(--font-heading)] text-xl md:text-2xl font-light text-[var(--color-dark)] group-hover:text-[var(--color-primary)] transition-colors duration-300">
+              {faq.pregunta}
+            </span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full border border-[var(--color-primary)] flex items-center justify-center text-[var(--color-primary)] transition-all duration-300">
+              <!-- Plus -->
+              <svg class="faq-plus" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M5 12h14"/><path d="M12 5v14"/>
+              </svg>
+              <!-- Minus -->
+              <svg class="faq-minus hidden" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M5 12h14"/>
+              </svg>
+            </span>
+          </button>
+
+          <div class="faq-body overflow-hidden" style="max-height: 0; transition: max-height 0.4s cubic-bezier(0.22,1,0.36,1);">
+            <p class="[font-family:var(--font-body)] text-base leading-relaxed text-[var(--color-dark)]/60 pb-6 max-w-2xl">
+              {faq.respuesta}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll(".faq-item").forEach((item) => {
+    const trigger = item.querySelector(".faq-trigger")!;
+    const body    = item.querySelector(".faq-body") as HTMLElement;
+    const icon    = item.querySelector(".faq-icon")!;
+    const plus    = item.querySelector(".faq-plus")!;
+    const minus   = item.querySelector(".faq-minus")!;
+
+    trigger.addEventListener("click", () => {
+      const isOpen = trigger.getAttribute("aria-expanded") === "true";
+
+      // Close all
+      document.querySelectorAll(".faq-item").forEach((other) => {
+        const otherTrigger = other.querySelector(".faq-trigger")!;
+        const otherBody    = other.querySelector(".faq-body") as HTMLElement;
+        const otherIcon    = other.querySelector(".faq-icon")!;
+        const otherPlus    = other.querySelector(".faq-plus")!;
+        const otherMinus   = other.querySelector(".faq-minus")!;
+        otherTrigger.setAttribute("aria-expanded", "false");
+        otherBody.style.maxHeight = "0";
+        otherIcon.classList.remove("bg-[var(--color-primary)]", "text-[var(--color-primary-light)]");
+        otherPlus.classList.remove("hidden");
+        otherMinus.classList.add("hidden");
+      });
+
+      // Open if was closed
+      if (!isOpen) {
+        trigger.setAttribute("aria-expanded", "true");
+        body.style.maxHeight = body.scrollHeight + "px";
+        icon.classList.add("!bg-[var(--color-primary)]", "!text-[var(--color-primary-light)]");
+        plus.classList.add("hidden");
+        minus.classList.remove("hidden");
+      }
+    });
+  });
+</script>

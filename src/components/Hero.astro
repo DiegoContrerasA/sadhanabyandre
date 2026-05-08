@@ -1,101 +1,162 @@
 ---
-import { Image } from 'astro:assets';
-import heroImg from '../assets/images/hero.jpg';
+const links = [
+  { label: "Sobre mí",             href: "#sobre-mi" },
+  { label: "Servicios",            href: "#servicios" },
+  { label: "Kobido",               href: "#kobido" },
+  { label: "Horarios",             href: "#horarios" },
+  { label: "Faq", href: "#faq" },
+];
 ---
 
-<section id="inicio" class="relative w-full h-dvh min-h-[580px] overflow-hidden">
+<header class="relative h-dvh w-full bg-[url(../assets/images/hero.jpeg)] bg-cover bg-center overflow-hidden">
 
-  <!-- Background image -->
-  <Image
-    src={heroImg}
-    alt="Sadhana by Andre — práctica de yoga"
-    class="absolute inset-0 w-full h-full object-cover object-[center_20%] z-0 scale-[1.04] animate-[heroZoom_14s_ease-out_forwards]"
-    widths={[640, 1024, 1600]}
-    sizes="100vw"
-    loading="eager"
-    fetchpriority="high"
-  />
 
-  <!-- Overlay -->
-  <div
-    class="absolute inset-0 z-10"
-    style="background: linear-gradient(110deg, rgba(20,8,16,0.72) 0%, rgba(20,8,16,0.38) 50%, rgba(20,8,16,0.12) 100%), linear-gradient(to top, rgba(20,8,16,0.55) 0%, transparent 45%)"
-    aria-hidden="true"
-  ></div>
 
-  <!-- Content -->
-  <div class="relative z-20 flex flex-col justify-between h-full px-8 py-12 md:px-16 md:py-14 lg:px-20">
+  <!-- Navbar -->
+  <nav
+    id="navbar"
+    class=" inset-x-0 top-0 z-50 border-b border-transparent transition-all duration-500"
+    aria-label="Navegación principal"
+  >
+    <div class="max-w-5xl mx-auto px-8 h-[4.5rem] flex items-center justify-center relative">
 
-    <!-- Top block -->
-    <div class="max-w-2xl animate-[fadeUp_1s_cubic-bezier(0.22,1,0.36,1)_0.2s_both]">
+      <!-- Desktop links -->
+      <ul class="hidden md:flex items-center gap-10 list-none" role="list">
+        {links.map(l => (
+          <li>
+            <a
+              href={l.href}
+              class="nav-link inline-block text-white/80 text-sm tracking-[0.22em] uppercase no-underline transition-colors duration-300 hover:text-white  [text-shadow:0_1px_12px_rgba(0,0,0,0.55)] hover:underline hover:underline-offset-6"
+            >
+              {l.label}
+            </a>
+          </li>
+        ))}
+      </ul>
 
-      <p class="text-[0.7rem] tracking-[0.22em] uppercase text-primary-light/50 mb-5 font-light">
-        Sadhana by Andre
-      </p>
+      <!-- Hamburger -->
+      <button
+        id="nav-open"
+        class="nav-burger md:hidden absolute right-8 flex flex-col gap-[5px] bg-transparent border-0 cursor-pointer p-2 text-white transition-colors duration-400"
+        aria-label="Abrir menú"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+      >
+        <span class="block w-[22px] h-px bg-current"></span>
+        <span class="block w-[22px] h-px bg-current"></span>
+        <span class="block w-[22px] h-px bg-current"></span>
+      </button>
 
-      <h1 class="font-light leading-[1.02] tracking-tight text-primary-light mb-5" style="font-size: clamp(3rem, 9vw, 7rem)">
-        <span class="block">Encuentra <span class="text-secondary">—</span> Tu</span>
-        <span class="block">Paz Interior</span>
-      </h1>
-
-      <p class="text-primary-light/70 font-light leading-relaxed max-w-sm mb-8" style="font-size: clamp(0.8rem, 1.4vw, 0.95rem)">
-        Ya sea que estés comenzando o profundizando tu práctica, únete a nuestra comunidad
-        para un camino revitalizante hacia el bienestar.
-      </p>
-
-      <div class="flex items-center gap-3">
-        <a
-          href="#reserva"
-          class="inline-flex items-center px-7 py-3 rounded-full border border-primary-light/35 bg-primary-light/[0.08] backdrop-blur-md text-primary-light text-sm tracking-wide transition-all duration-200 hover:bg-primary-light/[0.18] hover:border-primary-light/60 whitespace-nowrap"
-        >
-          Reserva tu Clase
-        </a>
-
-        <a
-          href="#reserva"
-          aria-label="Reserva tu clase"
-          class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-primary-light/35 bg-primary-light/[0.08] backdrop-blur-md text-primary-light transition-all duration-200 hover:bg-primary hover:border-primary hover:[&>svg]:rotate-45 flex-shrink-0"
-        >
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" class="transition-transform duration-200">
-            <path d="M3.75 14.25L14.25 3.75M14.25 3.75H6.75M14.25 3.75V11.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </div>
     </div>
+  </nav>
 
-    <!-- Stats bar -->
-    <div class="flex items-center gap-6 md:gap-10 animate-[fadeUp_1s_cubic-bezier(0.22,1,0.36,1)_0.5s_both]">
+  <!-- Mobile full-screen overlay -->
+  <div
+    id="mobile-menu"
+    class="fixed inset-0 z-100 flex flex-col items-center justify-center pb-12 bg-primary"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Menú de navegación"
+  >
+    <ul class="flex-1 flex flex-col items-center justify-center gap-10 list-none w-full" role="list">
+      {links.map(l => (
+        <li>
+          <a
+            href={l.href}
+            class="mobile-link text-2xl inline-block font-light text-white/70 tracking-[0.08em] uppercase no-underline text-center transition-colors duration-250 hover:text-white"
+          >
+            {l.label}
+          </a>
+        </li>
+      ))}
+    </ul>
 
-      <div class="flex flex-col gap-1">
-        <span class="text-primary-light font-light leading-none tracking-tight" style="font-size: clamp(1.6rem, 4vw, 2.4rem)">500+</span>
-        <span class="text-[0.65rem] md:text-[0.72rem] tracking-[0.06em] uppercase text-primary-light/55 font-light">Alumnos Felices</span>
-      </div>
+    <!-- X at bottom -->
+    <button
+      id="nav-close"
+      class="absolute top-6 right-10 text-white cursor-pointer opacity-70 hover:opacity-100"
+      aria-label="Cerrar menú"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
 
-      <div class="w-px h-10 bg-primary-light/20 flex-shrink-0" aria-hidden="true"></div>
-
-      <div class="flex flex-col gap-1">
-        <span class="text-primary-light font-light leading-none tracking-tight" style="font-size: clamp(1.6rem, 4vw, 2.4rem)">20+</span>
-        <span class="text-[0.65rem] md:text-[0.72rem] tracking-[0.06em] uppercase text-primary-light/55 font-light">Clases al Mes</span>
-      </div>
-
-      <div class="w-px h-10 bg-primary-light/20 flex-shrink-0" aria-hidden="true"></div>
-
-      <div class="flex flex-col gap-1">
-        <span class="text-primary-light font-light leading-none tracking-tight" style="font-size: clamp(1.6rem, 4vw, 2.4rem)">98%</span>
-        <span class="text-[0.65rem] md:text-[0.72rem] tracking-[0.06em] uppercase text-primary-light/55 font-light">Satisfacción</span>
-      </div>
-
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 inset-x-0 flex flex-col items-center gap-2 pointer-events-none z-10 text-primary" aria-hidden="true">
+    <div class="scroll-arrow flex flex-col items-center gap-[3px]">
+      <svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L8 8L15 1" stroke="currentColor" stroke-opacity="1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L8 8L15 1" stroke="currentColor" stroke-opacity="0.9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </div>
   </div>
-</section>
+
+</header>
 
 <style>
-  @keyframes heroZoom {
-    from { transform: scale(1.04); }
-    to   { transform: scale(1); }
+
+  /* Scroll indicator */
+  .scroll-arrow {
+    animation: scroll-bounce 1.8s ease-in-out infinite;
   }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(28px); }
-    to   { opacity: 1; transform: translateY(0); }
+  @keyframes scroll-bounce {
+    0%, 100% { transform: translateY(0);     opacity: 1; }
+    50%       { transform: translateY(6px);  opacity: 0.5; }
+  }
+
+  /* Scrolled state — toggled via JS */
+  #navbar.is-scrolled {
+    background: var(--color-neutral);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-color: rgba(156, 70, 132, 0.1);
+  }
+  #navbar.is-scrolled .nav-link {
+    color: rgba(15, 8, 18, 0.6);
+    text-shadow: none;
+  }
+  #navbar.is-scrolled .nav-link:hover { color: var(--color-primary); }
+  #navbar.is-scrolled .nav-burger { color: var(--color-dark); filter: none; }
+
+  /* Mobile overlay: closed by default, opens with .is-open */
+  #mobile-menu {
+    transform: translateX(100%);
+    transition: transform 0.45s cubic-bezier(0.77, 0, 0.175, 1);
+    pointer-events: none;
+  }
+  #mobile-menu.is-open {
+    transform: translateX(0);
+    pointer-events: auto;
   }
 </style>
+
+<script>
+  const navbar   = document.getElementById("navbar")!;
+  const openBtn  = document.getElementById("nav-open")!;
+  const closeBtn = document.getElementById("nav-close")!;
+  const menu     = document.getElementById("mobile-menu")!;
+
+
+  openBtn.addEventListener("click", () => {
+    menu.classList.add("is-open");
+    menu.setAttribute("aria-hidden", "false");
+    openBtn.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  });
+
+  const closeMenu = () => {
+    menu.classList.remove("is-open");
+    menu.setAttribute("aria-hidden", "true");
+    openBtn.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  };
+
+  closeBtn.addEventListener("click", closeMenu);
+  menu.querySelectorAll(".mobile-link").forEach(l => l.addEventListener("click", closeMenu));
+</script>

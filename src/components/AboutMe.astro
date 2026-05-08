@@ -1,146 +1,42 @@
 ---
-import { Image } from 'astro:assets';
-import fotoAndre from '../assets/images/WhatsApp Image 2026-04-17 at 11.52.41 AM.jpeg.jpg';
+import aboutImg from "../assets/images/about-me.jpg";
 ---
 
-<section id="sobre-mi" class="bg-primary-light overflow-hidden">
-  <div class="flex flex-col lg:flex-row min-h-[90vh]">
+<section id="sobre-mi" class="bg-primary-light py-24 md:py-32 px-6 md:px-12">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
 
-    <!-- ── Left: content ── -->
-    <div class="flex flex-col justify-center px-8 py-20 md:px-16 lg:px-20 lg:w-[52%] xl:w-[50%]">
+      <div class="relative max-w-md mx-auto lg:max-w-none">
+          <div class="absolute  w-full h-full border border-primary top-[20px] left-[20px]"></div>
+       <img
+          src={aboutImg.src}
+          alt="Andre, instructora de yoga"
+          class="w-full object-cover aspect-4/5 relative  z-1"
+        />  
+      </div>
+    <div >
 
-      <!-- Eyebrow -->
-      <p class="text-[0.7rem] tracking-[0.22em] uppercase text-primary/40 mb-6 font-light">
-        Sobre mí
+      <p class=" text-[0.65rem] tracking-[0.35em] uppercase text-primary mb-5">
+        Sobre Mí
       </p>
 
-      <!-- Name block with left accent bar -->
-      <div class="flex gap-5 items-start mb-8">
-        <div class="w-px bg-primary/30 mt-1 flex-shrink-0" style="height: 3.5rem;"></div>
-        <div>
-          <p class="text-[0.72rem] tracking-[0.14em] uppercase text-primary/50 font-light mb-1">
-            Instructora de Yoga Certificada
-          </p>
-          <h2 class="font-light tracking-tight text-primary leading-none" style="font-size: clamp(2rem, 5vw, 3.2rem)">
-            Andre
-          </h2>
-        </div>
-      </div>
+      <h2 class=" text-4xl md:text-5xl lg:text-[3.5rem] font-light leading-tight  mb-8">
+        El camino hacia<br />
+        <em class="italic text-primary">tu equilibrio</em>
+      </h2>
 
-      <!-- Story text -->
-      <div class="space-y-4 mb-10 max-w-lg">
-        <p class="text-[0.65rem] tracking-[0.16em] uppercase text-primary/40 font-light mb-2">
-          Mi historia
+      <div class="space-y-5  text-base leading-relaxed ">
+        <p>
+          Con más de 12 años guiando prácticas de Hatha y Vinyasa Yoga, he dedicado mi vida a crear espacios donde el cuerpo y la mente encuentren su ritmo natural.
         </p>
-        <p class="text-primary/70 font-light leading-relaxed" style="font-size: clamp(0.85rem, 1.3vw, 0.95rem)">
-          Llegué al yoga buscando calma en medio del ruido, y encontré mucho más que eso: encontré
-          una forma de vivir. Desde hace años acompaño a mujeres en este camino de reconexión con
-          su cuerpo, su respiración y su esencia.
+        <p>
+          Formada en India y Japón, combino la tradición del yoga con el arte milenario del masaje Kobido, ofreciendo una experiencia de bienestar integral que trasciende lo físico.
         </p>
-        <p class="text-primary/70 font-light leading-relaxed" style="font-size: clamp(0.85rem, 1.3vw, 0.95rem)">
-          Soy instructora certificada con formación en yoga prenatal, post parto, yoga facial y
-          práctica grupal. Mi enfoque es gentil, honesto y profundamente humano. Creo que cada
-          cuerpo tiene su propio ritmo, y mi trabajo es acompañarte en el tuyo.
-        </p>
-        <p class="text-primary/70 font-light leading-relaxed" style="font-size: clamp(0.85rem, 1.3vw, 0.95rem)">
-          Cada clase es un espacio seguro para moverse, soltar y volver a casa contigo misma.
+        <p>
+          Mi filosofía es simple: cada cuerpo tiene su propia sabiduría. Mi trabajo es ayudarte a escucharla.
         </p>
       </div>
 
-      <!-- Social links -->
-      <div class="mb-10">
-        <p class="text-[0.62rem] tracking-[0.16em] uppercase text-primary/35 font-light mb-4">
-          Encuéntrame en
-        </p>
-        <div class="flex items-center gap-3">
-
-          <!-- Instagram -->
-          <a
-            href="https://instagram.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-primary/20 text-primary/60 hover:text-primary hover:border-primary/50 hover:bg-primary/5 transition-all duration-200"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-              <circle cx="12" cy="12" r="4"/>
-              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-            </svg>
-            <span class="text-[0.7rem] tracking-wide font-light">Instagram</span>
-          </a>
-
-          <!-- WhatsApp -->
-          <a
-            href="https://wa.me/1234567890"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="WhatsApp"
-            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-primary/20 text-primary/60 hover:text-primary hover:border-primary/50 hover:bg-primary/5 transition-all duration-200"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-            </svg>
-            <span class="text-[0.7rem] tracking-wide font-light">WhatsApp</span>
-          </a>
-
-          <!-- Facebook -->
-          <a
-            href="https://facebook.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-primary/20 text-primary/60 hover:text-primary hover:border-primary/50 hover:bg-primary/5 transition-all duration-200"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-            </svg>
-            <span class="text-[0.7rem] tracking-wide font-light">Facebook</span>
-          </a>
-
-        </div>
-      </div>
-
-      <!-- CTA -->
-      <div class="flex items-center gap-3">
-        <a
-          href="#reserva"
-          class="inline-flex items-center gap-2 px-7 py-3 rounded-full border border-primary/30 bg-transparent text-primary text-sm font-light tracking-wide transition-all duration-200 hover:bg-primary hover:text-primary-light hover:border-primary"
-        >
-          Reserva una clase
-          <svg width="14" height="14" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-            <path d="M3.75 14.25L14.25 3.75M14.25 3.75H6.75M14.25 3.75V11.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </div>
-
+      <div class="w-10 h-px bg-primary mt-10"></div>
     </div>
-
-    <!-- ── Right: photo ── -->
-    <div class="relative lg:w-[48%] xl:w-[50%] min-h-[60vw] lg:min-h-0">
-
-      <!-- Decorative blob behind photo -->
-      <div
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 pointer-events-none"
-        style="width: 80%; aspect-ratio: 1; background: radial-gradient(circle, #C969B7 0%, #9C4684 60%, transparent 100%);"
-        aria-hidden="true"
-      ></div>
-
-      <Image
-        src={fotoAndre}
-        alt="Andre — instructora de yoga"
-        class="w-full h-full object-cover object-top lg:object-center"
-        widths={[600, 900, 1200]}
-        sizes="(max-width: 1024px) 100vw, 50vw"
-      />
-
-      <!-- Subtle bottom fade to blend with next section -->
-      <div
-        class="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
-        style="background: linear-gradient(to top, #F8F3E8, transparent)"
-        aria-hidden="true"
-      ></div>
-    </div>
-
   </div>
 </section>
