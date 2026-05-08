@@ -9,16 +9,12 @@ const links = [
 ---
 
 <header class="relative h-dvh w-full bg-[url(../assets/images/hero.jpeg)] bg-cover bg-center overflow-hidden">
-
-
-
   <!-- Navbar -->
   <nav
     id="navbar"
-    class=" inset-x-0 top-0 z-50 border-b border-transparent transition-all duration-500"
+    class="fixed inset-x-0 top-0 z-50 flex justify-center items-center transition-all duration-500 px-8 h-20 backdrop-blur-[8px]"
     aria-label="Navegación principal"
   >
-    <div class="max-w-5xl mx-auto px-8 h-[4.5rem] flex items-center justify-center relative">
 
       <!-- Desktop links -->
       <ul class="hidden md:flex items-center gap-10 list-none" role="list">
@@ -34,26 +30,25 @@ const links = [
         ))}
       </ul>
 
-      <!-- Hamburger -->
-      <button
-        id="nav-open"
-        class="nav-burger md:hidden absolute right-8 flex flex-col gap-[5px] bg-transparent border-0 cursor-pointer p-2 text-white transition-colors duration-400"
-        aria-label="Abrir menú"
-        aria-controls="mobile-menu"
-        aria-expanded="false"
-      >
-        <span class="block w-[22px] h-px bg-current"></span>
-        <span class="block w-[22px] h-px bg-current"></span>
-        <span class="block w-[22px] h-px bg-current"></span>
-      </button>
-
-    </div>
   </nav>
+
+  <!-- Hamburger / X toggle (mobile only) — z-index above mobile menu -->
+  <button
+    id="nav-toggle"
+    class="md:hidden fixed top-0 right-8 z-[200] h-20 flex flex-col items-center justify-center gap-[5px] bg-transparent border-0 cursor-pointer text-white"
+    aria-label="Abrir menú"
+    aria-controls="mobile-menu"
+    aria-expanded="false"
+  >
+    <span class="burger-line block w-[22px] h-px bg-current transition duration-[400ms] ease-in-out"></span>
+    <span class="burger-line block w-[22px] h-px bg-current transition duration-[400ms] ease-in-out"></span>
+    <span class="burger-line block w-[22px] h-px bg-current transition duration-[400ms] ease-in-out"></span>
+  </button>
 
   <!-- Mobile full-screen overlay -->
   <div
     id="mobile-menu"
-    class="fixed inset-0 z-100 flex flex-col items-center justify-center pb-12 bg-primary"
+    class="fixed inset-0 z-[150] flex flex-col items-center justify-center pb-12 bg-primary"
     aria-hidden="true"
     role="dialog"
     aria-modal="true"
@@ -64,29 +59,17 @@ const links = [
         <li>
           <a
             href={l.href}
-            class="mobile-link text-2xl inline-block font-light text-white/70 tracking-[0.08em] uppercase no-underline text-center transition-colors duration-250 hover:text-white"
+            class="mobile-link text-2xl inline-block font-light text-white/70 uppercase no-underline text-center transition-colors duration-250 hover:text-white"
           >
             {l.label}
           </a>
         </li>
       ))}
     </ul>
-
-    <!-- X at bottom -->
-    <button
-      id="nav-close"
-      class="absolute top-6 right-10 text-white cursor-pointer opacity-70 hover:opacity-100"
-      aria-label="Cerrar menú"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-        <line x1="18" y1="6" x2="6" y2="18"/>
-        <line x1="6" y1="6" x2="18" y2="18"/>
-      </svg>
-    </button>
   </div>
 
   <!-- Scroll indicator -->
-  <div class="absolute bottom-8 inset-x-0 flex flex-col items-center gap-2 pointer-events-none z-10 text-primary" aria-hidden="true">
+  <!-- <div class="absolute bottom-8 inset-x-0 flex flex-col items-center gap-2 pointer-events-none z-10 text-primary" aria-hidden="true">
     <div class="scroll-arrow flex flex-col items-center gap-[3px]">
       <svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1 1L8 8L15 1" stroke="currentColor" stroke-opacity="1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
@@ -95,7 +78,7 @@ const links = [
         <path d="M1 1L8 8L15 1" stroke="currentColor" stroke-opacity="0.9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
-  </div>
+  </div> -->
 
 </header>
 
@@ -110,20 +93,6 @@ const links = [
     50%       { transform: translateY(6px);  opacity: 0.5; }
   }
 
-  /* Scrolled state — toggled via JS */
-  #navbar.is-scrolled {
-    background: var(--color-neutral);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-color: rgba(156, 70, 132, 0.1);
-  }
-  #navbar.is-scrolled .nav-link {
-    color: rgba(15, 8, 18, 0.6);
-    text-shadow: none;
-  }
-  #navbar.is-scrolled .nav-link:hover { color: var(--color-primary); }
-  #navbar.is-scrolled .nav-burger { color: var(--color-dark); filter: none; }
-
   /* Mobile overlay: closed by default, opens with .is-open */
   #mobile-menu {
     transform: translateX(100%);
@@ -134,29 +103,45 @@ const links = [
     transform: translateX(0);
     pointer-events: auto;
   }
+
+  /* Hamburger → X */
+  #nav-toggle.is-open .burger-line:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  #nav-toggle.is-open .burger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  #nav-toggle.is-open .burger-line:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
 </style>
 
 <script>
-  const navbar   = document.getElementById("navbar")!;
-  const openBtn  = document.getElementById("nav-open")!;
-  const closeBtn = document.getElementById("nav-close")!;
-  const menu     = document.getElementById("mobile-menu")!;
+  const $toggle = document.getElementById("nav-toggle")!;
+  const $menu   = document.getElementById("mobile-menu")!;
 
-
-  openBtn.addEventListener("click", () => {
-    menu.classList.add("is-open");
-    menu.setAttribute("aria-hidden", "false");
-    openBtn.setAttribute("aria-expanded", "true");
+  const openMenu = () => {
+    $menu.classList.add("is-open");
+    $toggle.classList.add("is-open");
+    $menu.setAttribute("aria-hidden", "false");
+    $toggle.setAttribute("aria-expanded", "true");
+    $toggle.setAttribute("aria-label", "Cerrar menú");
     document.body.style.overflow = "hidden";
-  });
+  };
 
   const closeMenu = () => {
-    menu.classList.remove("is-open");
-    menu.setAttribute("aria-hidden", "true");
-    openBtn.setAttribute("aria-expanded", "false");
+    $menu.classList.remove("is-open");
+    $toggle.classList.remove("is-open");
+    $menu.setAttribute("aria-hidden", "true");
+    $toggle.setAttribute("aria-expanded", "false");
+    $toggle.setAttribute("aria-label", "Abrir menú");
     document.body.style.overflow = "";
   };
 
-  closeBtn.addEventListener("click", closeMenu);
-  menu.querySelectorAll(".mobile-link").forEach(l => l.addEventListener("click", closeMenu));
+  $toggle.addEventListener("click", () => {
+    $menu.classList.contains("is-open") ? closeMenu() : openMenu();
+  });
+
+  $menu.querySelectorAll(".mobile-link").forEach(l => l.addEventListener("click", closeMenu));
 </script>
