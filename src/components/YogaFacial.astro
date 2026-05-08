@@ -1,0 +1,142 @@
+---
+const beneficios = [
+  {
+    titulo: "Rejuvenecimiento y Tonificación",
+    desc: "Fortalece y eleva los músculos faciales, lo que ayuda a combatir la flacidez, definir el óvalo facial y suavizar líneas finas.",
+  },
+  {
+    titulo: "Piel Radiante y Saludable",
+    desc: "Al mejorar la circulación sanguínea, aumenta la oxigenación y el aporte de nutrientes, logrando una piel más tersa, brillante y saludable.",
+  },
+  {
+    titulo: "Reducción de la Tensión",
+    desc: "Libera la tensión acumulada en zonas como la frente, mandíbula y entrecejo, lo que ayuda a disminuir la apariencia de cansancio y estrés en el rostro.",
+  },
+  {
+    titulo: "Efecto Antiedad Natural",
+    desc: "Ayuda a prevenir y disminuir los signos de envejecimiento, especialmente útil a partir de los 30 años.",
+  },
+  {
+    titulo: "Mejora la Circulación y el Drenaje",
+    desc: "Ayuda a reducir la retención de líquidos, bolsas y ojeras.",
+  },
+];
+---
+
+<section id="yoga-facial" class="bg-white px-6 md:px-12 py-24 md:py-32">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Top divider -->
+    <div class="w-px h-16 bg-primary/25 mx-auto mb-16"></div>
+
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <p class="text-[0.65rem] tracking-[0.35em] uppercase text-primary mb-4">
+        Yoga Facial
+      </p>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-light text-dark">
+        El gym natural <em class="italic text-primary">de tu rostro</em>
+      </h2>
+    </div>
+
+    <!-- Grid — text left, video right -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-center">
+
+      <!-- Text — left -->
+      <div class="md:col-span-6">
+
+        <p class="text-base md:text-lg leading-relaxed text-dark/60 mb-10">
+          Es una técnica natural que tonifica y fortalece los músculos del rostro, cuello y escote, mejorando la firmeza, reduciendo la flacidez y atenuando arrugas. Al estimular la circulación sanguínea y oxigenar los tejidos, proporciona una apariencia más radiante, destensa la mandíbula y reduce el estrés, promoviendo un aspecto más joven y relajado.
+        </p>
+
+        <!-- Benefits -->
+        <div class="space-y-5 mb-10">
+          {beneficios.map((b) => (
+            <div class="flex items-start gap-4">
+              <div class="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-2"></div>
+              <div>
+                <p class="text-base font-medium text-dark">{b.titulo}</p>
+                <p class="text-sm leading-relaxed text-dark/55 mt-0.5">{b.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- CTA -->
+        <div class="flex flex-col items-start gap-4">
+          <a
+            href="https://wa.me/573122861377?text=¡Hola%20Andre!%20Me%20interesa%20saber%20más%20sobre%20el%20Yoga%20Facial."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm tracking-widest uppercase bg-primary text-primary-light px-8 py-4 hover:bg-secondary transition-colors duration-300"
+          >
+            Quiero saber más
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Video — right -->
+      <div class="md:col-span-5 md:col-start-8">
+        <div id="facial-wrapper" class="relative overflow-hidden aspect-[3/4] group">
+          <video
+            id="facial-video"
+            src="/facial.mp4#t=1"
+            playsinline
+            preload="metadata"
+            class="w-full h-full object-cover"
+          ></video>
+
+          <!-- Custom play/pause button -->
+          <button
+            id="facial-btn"
+            aria-label="Reproducir video"
+            class="absolute inset-0 flex items-center justify-center transition-opacity duration-300"
+          >
+            <!-- Play icon (visible when paused) -->
+            <span id="facial-play" class="flex items-center justify-center w-16 h-16 rounded-full bg-primary/80 text-white backdrop-blur-sm transition-transform duration-200 group-hover:scale-110">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5,3 19,12 5,21"/>
+              </svg>
+            </span>
+            <!-- Pause icon (hidden when paused) -->
+            <span id="facial-pause" class="hidden flex items-center justify-center w-16 h-16 rounded-full bg-primary/80 text-white backdrop-blur-sm transition-transform duration-200 group-hover:scale-110">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="5" y="3" width="4" height="18" rx="1"/>
+                <rect x="15" y="3" width="4" height="18" rx="1"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const video   = document.getElementById("facial-video") as HTMLVideoElement;
+  const btn     = document.getElementById("facial-btn")!;
+  const playIcon  = document.getElementById("facial-play")!;
+  const pauseIcon = document.getElementById("facial-pause")!;
+
+  const sync = () => {
+    if (video.paused) {
+      playIcon.classList.remove("hidden");
+      pauseIcon.classList.add("hidden");
+      btn.setAttribute("aria-label", "Reproducir video");
+    } else {
+      playIcon.classList.add("hidden");
+      pauseIcon.classList.remove("hidden");
+      btn.setAttribute("aria-label", "Pausar video");
+    }
+  };
+
+  btn.addEventListener("click", () => {
+    video.paused ? video.play() : video.pause();
+  });
+
+  video.addEventListener("play", sync);
+  video.addEventListener("pause", sync);
+  video.addEventListener("ended", sync);
+</script>

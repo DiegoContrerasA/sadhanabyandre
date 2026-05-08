@@ -1,30 +1,15 @@
 ---
-// Import all available images
-import img01 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.40 AM.jpeg.jpg";
-import img02 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.40 AM (1).jpeg.jpg";
-import img03 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.40 AM (2).jpeg.jpg";
-import img04 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.40 AM (3).jpeg.jpg";
-import img05 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.40 AM (4).jpeg.jpg";
-import img06 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.41 AM.jpeg.jpg";
-import img07 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.42 AM (1).jpeg.jpg";
-import img08 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.43 AM (1).jpeg.jpg";
-import img09 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.43 AM (2).jpeg.jpg";
-import img10 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.43 AM (3).jpeg.jpg";
-import img11 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.44 AM (1).jpeg.jpg";
-import img12 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.44 AM (2).jpeg.jpg";
-import img13 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.44 AM 2.jpeg.jpg";
-import img14 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.45 AM.jpeg.jpg";
-const pool = [
-  img01, img02, img03, img04, img05,
-  img06, img07, img08, img09, img10,
-  img11, img12, img13, img14,
-];
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/gallery/*.jpeg',
+  { eager: true }
+);
+const pool = Object.entries(imageModules)
+  .sort(([a], [b]) => {
+    const n = (p: string) => parseInt(p.split('/').pop()!.replace('.jpeg', ''));
+    return n(a) - n(b);
+  })
+  .map(([, mod]) => mod.default);
 
-// Bento pattern (repeats every 10 items on a 4-col grid)
-// col-span-2 row-span-2 | 1 | 1
-// 1 | 1 | col-span-2
-// 1 | 1 | col-span-2
-// 1 | 1 | col-span-2
 const spanPattern = [
   { col: "col-span-2 md:row-span-2" },
   { col: "" },
