@@ -171,6 +171,7 @@ export const es = {
       { label: "Instagram", href: "https://instagram.com/sadhanabyandre" },
       { label: "Facebook",  href: "https://facebook.com/sadhanabyandre"  },
       { label: "TikTok",    href: "https://tiktok.com/@sadhanabyandre"   },
+      { label: "YouTube",   href: "https://youtube.com/@sadhanabyandre"  },
     ],
   },
 
