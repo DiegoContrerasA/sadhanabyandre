@@ -2,10 +2,26 @@
 import imgKobido from '../assets/images/WhatsApp Image 2026-04-17 at 11.52.47 AM (1).jpeg.jpg';
 
 const beneficios = [
-  "Lifting natural del rostro",
-  "Estimulación de colágeno",
-  "Reducción de tensión mandibular",
-  "Luminosidad y rejuvenecimiento",
+  {
+    titulo: "Efecto Lifting Natural",
+    desc: "Reafirma los músculos faciales, redefiniendo el contorno facial sin cirugías.",
+  },
+  {
+    titulo: "Rejuvenecimiento y Luminosidad",
+    desc: "Atenúa arrugas, líneas de expresión y combate la flacidez, aportando frescura y luminosidad a la piel.",
+  },
+  {
+    titulo: "Mejora la Circulación y Producción de Colágeno",
+    desc: "Estimula la síntesis de colágeno y elastina, fortaleciendo la estructura dérmica y mejorando la textura de la piel.",
+  },
+  {
+    titulo: "Drenaje Linfático y Detox",
+    desc: "Ayuda a eliminar toxinas y reduce la retención de líquidos, disminuyendo la hinchazón facial y las ojeras.",
+  },
+  {
+    titulo: "Relajación y Antiestrés",
+    desc: "Alivia tensiones acumuladas en la mandíbula, cuello y cabeza, proporcionando un profundo bienestar físico y mental.",
+  },
 ];
 ---
 
@@ -31,35 +47,42 @@ const beneficios = [
       <!-- Text — left -->
       <div class="md:col-span-6">
 
-        <p class=" text-base md:text-lg leading-relaxed text-dark/60 mb-10">
-          El Kobido, conocido como <em>"el camino ancestral de la belleza"</em>, es mucho más que un masaje facial. Es una ceremonia de rejuvenecimiento profundo que trabaja sobre los 16 músculos del rostro, estimulando la producción natural de colágeno y elastina.
+        <p class="text-base md:text-lg leading-relaxed text-dark/60 mb-10">
+          Conocido como el <em>"lifting facial japonés"</em>, es una técnica milenaria que rejuvenece el rostro de forma natural, reduciendo arrugas y líneas de expresión mediante estimulación profunda de músculos y tejidos. Sus beneficios incluyen el aumento de la producción de colágeno y elastina, la mejora de la circulación sanguínea, el drenaje linfático para reducir bolsas y ojeras, y una intensa relajación, ofreciendo resultados visibles desde la primera sesión.
         </p>
 
         <!-- Benefits -->
-        <div class="space-y-6 mb-10">
+        <div class="space-y-5 mb-10">
           {beneficios.map((b) => (
-            <div class="flex items-center gap-4">
-              <div class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></div>
-              <span class=" text-xl md:text-2xl font-light text-dark">
-                {b}
-              </span>
+            <div class="flex items-start gap-4">
+              <div class="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-2"></div>
+              <div>
+                <p class="text-base font-medium text-dark">{b.titulo}</p>
+                <p class="text-sm leading-relaxed text-dark/55 mt-0.5">{b.desc}</p>
+              </div>
             </div>
           ))}
         </div>
 
         <!-- CTA -->
-        <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+        <div class="flex flex-col items-start gap-4">
           <a
-            href="https://wa.me/1234567890?text=Hola%20Andre%2C%20me%20gustar%C3%ADa%20reservar%20una%20sesi%C3%B3n%20de%20Kobido"
+            href="https://calendly.com/sadhanabyandre/30min"
             target="_blank"
             rel="noopener noreferrer"
-            class=" text-sm tracking-widest uppercase bg-primary text-primary-light px-8 py-4 hover:bg-secondary transition-colors duration-300"
+            class="text-sm tracking-widest uppercase bg-primary text-primary-light px-8 py-4 hover:bg-secondary transition-colors duration-300"
           >
             Reservar Sesión
           </a>
-          <span class=" text-sm text-dark/45">
-            Sesión individual · 60 min
-          </span>
+          <span class="text-sm text-dark/45">Sesión individual · 120 min</span>
+          <a
+            href="https://wa.me/573122861377?text=¡Hola%20Andre!%20Tengo%20algunas%20dudas%20sobre%20el%20masaje%20Kobido%20y%20me%20gustaría%20saber%20más%20antes%20de%20reservar%20mi%20sesión."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-primary underline underline-offset-4 hover:text-secondary transition-colors duration-300"
+          >
+            ¿Tienes dudas? Hablamos por WhatsApp
+          </a>
         </div>
 
       </div>

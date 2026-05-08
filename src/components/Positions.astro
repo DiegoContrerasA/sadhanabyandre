@@ -1,0 +1,66 @@
+---
+import imgFuerza      from "../assets/images/services.jpg";
+import imgFlexibilidad from "../assets/images/services.jpg";
+import imgRestauracion from "../assets/images/services.jpg";
+
+const poses = [
+  { src: imgFuerza,       alt: "Sirsasana – postura invertida",     label: "Fuerza",       tall: true  },
+  { src: imgFlexibilidad, alt: "Estiramiento lateral en exterior",   label: "Flexibilidad", tall: false },
+  { src: imgRestauracion, alt: "Estiramiento lateral en interior",   label: "Restauración", tall: false },
+];
+---
+
+<section id="posturas" class="bg-primary-light px-6 md:px-12 py-24 md:py-32 overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Top divider -->
+    <div class="w-px h-16 bg-primary/25 mx-auto mb-16"></div>
+
+    <!-- Header -->
+    <div class="text-center mb-20">
+      <p class="text-[0.65rem] tracking-[0.35em] uppercase text-primary mb-4">
+        La Práctica
+      </p>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-light">
+        Cada postura, <em class="italic text-primary">una conversación</em>
+      </h2>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 items-start">
+
+      <!-- Tall card — left -->
+      <div class="group relative overflow-hidden aspect-[2/3]">
+        <img
+          src={poses[0].src.src}
+          alt={poses[0].alt}
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+        />
+        <span class="absolute top-4 left-4 px-3 py-1 text-[10px] tracking-[0.22em] uppercase bg-primary text-white">
+          {poses[0].label}
+        </span>
+      </div>
+
+      <!-- Right column — 2 stacked -->
+      <div class="flex flex-col gap-4 md:gap-5">
+        {poses.slice(1).map(p => (
+          <div class="group relative overflow-hidden aspect-[4/3]">
+            <img
+              src={p.src.src}
+              alt={p.alt}
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+            />
+            <span class="absolute top-4 left-4 px-3 py-1 text-[10px] tracking-[0.22em] uppercase bg-primary text-white">
+              {p.label}
+            </span>
+          </div>
+        ))}
+      </div>
+
+    </div>
+
+    <!-- Bottom divider -->
+    <div class="w-px h-16 bg-primary/25 mx-auto mt-16"></div>
+
+  </div>
+</section>

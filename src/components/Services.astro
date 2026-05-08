@@ -21,14 +21,14 @@ const servicios = [
     nombre: "Yoga Prenatal",
     duracion: "60 min",
     descripcion:
-      "Una práctica suave y amorosa para acompañar cada etapa del embarazo. Fortalece tu cuerpo, calma tu mente y conecta con el ser que crece en ti.",
+      "Una práctica suave y amorosa para acompañar cada etapa del embarazo. Fortalece tu cuerpo, calma tu mente y conecta con el ser que crece en ti.\n\nNos preparamos física y mentalmente para el parto a través de movimiento consciente, ejercicios de respiración y técnicas que ayudan a crear más confianza, conexión y bienestar durante esta etapa.",
   },
   {
     num: "04",
     nombre: "Yoga Post Parto",
     duracion: "60 min",
     descripcion:
-      "Un regreso suave al movimiento después del parto. Recupera tu fuerza, reconecta con tu cuerpo y encuentra calma en esta nueva etapa.",
+      "Un regreso suave y consciente al movimiento después del parto. Recupera tu fuerza, reconecta con tu cuerpo y encuentra calma y estabilidad en esta nueva etapa.\n\nTrabajamos activación de core y piso pélvico con técnicas hipopresivas, respiración y movimiento funcional para apoyar la recuperación del cuerpo de forma segura y progresiva.",
   },
   {
     num: "05",
@@ -89,9 +89,11 @@ const servicios = [
                 {s.duracion}
               </span>
             </div>
-            <p class=" text-base leading-relaxed text-dark/60 max-w-md">
-              {s.descripcion}
-            </p>
+            <div class="space-y-3 text-base leading-relaxed text-dark/60 max-w-md">
+              {s.descripcion.split("\n\n").map((p: string) => (
+                <p>{p}</p>
+              ))}
+            </div>
           </div>
         ))}
         <div class="border-t border-dark/10"></div>

@@ -1,4 +1,6 @@
 ---
+import logo from "../assets/images/logo.png";
+
 const links = [
   { label: "Sobre mí",             href: "#sobre-mi" },
   { label: "Servicios",            href: "#servicios" },
@@ -6,9 +8,14 @@ const links = [
   { label: "Horarios",             href: "#horarios" },
   { label: "Faq", href: "#faq" },
 ];
+
+const stats = [
+  { value: "+7",  label: "años de experiencia" },
+  { value: "+5",  label: "certificaciones internacionales" },
+];
 ---
 
-<header class="relative h-dvh w-full bg-[url(../assets/images/hero.jpeg)] bg-cover bg-center overflow-hidden">
+<header id="hero-header" class="relative h-dvh w-full bg-cover bg-center overflow-hidden">
   <!-- Navbar -->
   <nav
     id="navbar"
@@ -68,21 +75,74 @@ const links = [
     </ul>
   </div>
 
-  <!-- Scroll indicator -->
-  <!-- <div class="absolute bottom-8 inset-x-0 flex flex-col items-center gap-2 pointer-events-none z-10 text-primary" aria-hidden="true">
-    <div class="scroll-arrow flex flex-col items-center gap-[3px]">
-      <svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M1 1L8 8L15 1" stroke="currentColor" stroke-opacity="1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M1 1L8 8L15 1" stroke="currentColor" stroke-opacity="0.9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+  <!-- Dark overlay -->
+  <div class="absolute inset-0 bg-black/40 z-0"></div>
+
+  <!-- Hero content — logo + tagline -->
+  <div class="relative z-1 flex flex-col items-center md:items-start  justify-between sm:justify-start md:justify-center py-28 md:py-0 px-12 max-w-7xl mx-auto  h-full">
+    <!-- Logo -->
+  <div class="flex flex-col gap-5 md:gap-10">
+    <div class="flex flex-col items-center md:items-start">
+      <img
+      src={logo.src}
+      alt="Sadhana by Andre"
+      class="w-72 md:w-96 object-contain drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)]"
+    />
+    <!-- "by andre" caption -->
+    <p class="text-white/60 text-xs tracking-[0.35em] uppercase">by andre</p>
+  </div>
+
+    <!-- Tagline — 2 líneas -->
+    <div class="space-y-1 text-white md:text-white/80 text-center md:text-left">
+      <p class="text-lg md:text-xl font-light tracking-[0.18em] uppercase [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
+        Respira · Estírate
+      </p>
+      <p class="text-base md:text-lg font-light tracking-[0.18em] uppercase [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
+        Fortalece tu ser interior
+      </p>
     </div>
-  </div> -->
+  </div>
+
+    <!-- CTA -->
+    <a
+      href="#servicios"
+      class="my-10 inline-flex items-center justify-center px-8 h-[52px] text-xs tracking-[0.28em] uppercase bg-primary text-white transition-opacity duration-300 hover:opacity-80"
+    >
+      Reservar clase
+    </a>
+  </div>
+
+  <!-- Stats bar — bottom -->
+  <div class="absolute bottom-0 inset-x-0 z-10">
+    <div class="flex divide-x divide-white/20 bg-black/30 backdrop-blur-sm">
+      {stats.map(s => (
+        <div class="flex-1 flex flex-col items-center justify-center py-5 px-4 gap-0.5">
+          <span class="text-white text-2xl md:text-3xl font-semibold tracking-tight [text-shadow:0_1px_8px_rgba(0,0,0,0.4)]">
+            {s.value}
+          </span>
+          <span class="text-white/70 text-[11px] md:text-xs tracking-[0.18em] uppercase text-center">
+            {s.label}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
 
 </header>
 
 <style>
+
+  /* Background images — mobile uses portrait crop, desktop uses landscape */
+  #hero-header {
+    background-image: url('../assets/images/hero-mobile.png');
+    background-position: center top;
+  }
+  @media (min-width: 768px) {
+    #hero-header {
+      background-image: url('../assets/images/hero.png');
+      background-position: center center;
+    }
+  }
 
   /* Scroll indicator */
   .scroll-arrow {

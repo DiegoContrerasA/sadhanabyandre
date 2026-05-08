@@ -84,7 +84,7 @@ export const es = {
       { day: "Martes",  time: "7:00 am",  tag: "Presencial", description: "Yoga en secuencias" },
       { day: "Jueves",  time: "6:15 pm",  tag: "Presencial", description: "Multinivel"         },
       { day: "Viernes", time: "9:00 am",  tag: "Presencial", description: "Masterclass"        },
-      { day: "Sábado",  time: "7:00 am",  tag: "Presencial", description: "Ashtanga base"      },
+      { day: "Sábado",  time: "7:00 am",  tag: "Presencial", description: "Ashtanga based"     },
     ],
   },
 
@@ -101,7 +101,7 @@ export const es = {
     label:     "Galería",
     heading:   "Encuentro de",
     headingEm: "Bienestar 2026",
-    body:      "Imágenes del último evento realizado en el Estudio Āsana.",
+    body:      "Imágenes del último evento realizado.",
   },
 
   events: {
