@@ -4,7 +4,7 @@ const clases = [
     dia: "Martes",
     hora: "7:00 am",
     virtual: true,
-    tag: "Presencial",
+    tags: ["Presencial", "En línea"],
     descripcion: "Yoga en Secuencias",
     detalle: "También conocido como yoga escalonado. En esta clase creamos una especie de coreografía a través de secuencias de posturas que repetimos varias veces, ayudando a mejorar la flexibilidad, coordinación, resistencia y memoria corporal mientras el cuerpo gana más confianza en el movimiento.",
   },
@@ -12,7 +12,7 @@ const clases = [
     dia: "Jueves",
     hora: "6:15 pm",
     virtual: false,
-    tag: "Presencial",
+    tags: ["Presencial"],
     descripcion: "Yoga Multinivel",
     detalle: "Una clase de vinyasa diseñada para adaptarse a cada persona que llega al mat. Cada práctica puede verse diferente según tu cuerpo, nivel y necesidades, creando un espacio seguro, amoroso y retador al mismo tiempo.",
   },
@@ -20,7 +20,7 @@ const clases = [
     dia: "Viernes",
     hora: "9:00 am",
     virtual: false,
-    tag: "Presencial",
+    tags: ["Presencial"],
     descripcion: "Masterclass",
     detalle: "Cada clase se enfoca en una postura específica para que no solo aprendas a \"hacerla\", sino realmente a comprenderla. Exploramos diferentes entradas, ajustes, activaciones y alineación para cuidar el cuerpo mientras avanzas en tu práctica de forma consciente y segura.",
   },
@@ -28,7 +28,7 @@ const clases = [
     dia: "Sábado",
     hora: "7:00 am",
     virtual: false,
-    tag: "Presencial",
+    tags: ["Presencial"],
     descripcion: "Ashtanga Based",
     detalle: "Una práctica inspirada en la estructura del Ashtanga, pero con la creatividad y fluidez del Vinyasa. Una combinación diseñada para desarrollar fuerza, resistencia, equilibrio y control corporal mientras disfrutas el movimiento.",
   },
@@ -85,9 +85,11 @@ const clases = [
           <!-- Badge + CTA -->
 
             <div class="flex gap-2">
-              <span class="inline-flex w-fit items-center gap-2 px-5 py-3 rounded-full bg-neutral/40 text-primary text-xs">
-                {clase.tag}
-              </span>
+              {clase.tags.map((tag: string) => (
+                <span class="inline-flex w-fit items-center px-5 py-3 rounded-full bg-neutral/40 text-primary text-xs whitespace-nowrap">
+                  {tag}
+                </span>
+              ))}
               <a
               href={`https://wa.me/573122861377?text=¡Hola! Quiero reservar mi cupo para la clase de ${clase.descripcion} el día ${clase.dia} a las ${clase.hora}.`}
               target="_blank"
