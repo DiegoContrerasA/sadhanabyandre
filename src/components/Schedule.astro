@@ -38,7 +38,7 @@ const clases = [
     <div class="w-px h-16 bg-primary/25 mx-auto mb-16"></div>
 
     <!-- Header -->
-    <div class="text-center mb-20" data-animate>
+    <div class="text-center mb-20">
       <p class=" text-[0.65rem] tracking-[0.35em] uppercase text-primary mb-4">
         Horarios
       </p>
@@ -48,7 +48,7 @@ const clases = [
     </div>
 
     <!-- Class list -->
-    <div class="flex flex-col" data-animate data-delay="150">
+    <div class="flex flex-col">
       {clases.map((clase) => (
         <div class="group flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-0 py-10 border-t border-primary/15">
 
@@ -77,7 +77,11 @@ const clases = [
 
           <!-- Badge + CTA -->
 
-            <a
+            <div class="flex gap-2">
+              <span class="inline-flex w-fit items-center gap-2 px-5 py-3 rounded-full bg-neutral/40 text-primary text-xs">
+                {clase.tag}
+              </span>
+              <a
               href={`https://wa.me/573122861377?text=¡Hola! Quiero reservar mi cupo para la clase de ${clase.descripcion} el día ${clase.dia} a las ${clase.hora}.`}
               target="_blank"
               rel="noopener noreferrer"
@@ -88,13 +92,14 @@ const clases = [
                 <path d="M3.75 14.25L14.25 3.75M14.25 3.75H6.75M14.25 3.75V11.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </a>
+            </div>
           </div>
       ))}
       <div class="border-t border-primary/15"></div>
     </div>
 
     <!-- Footer note -->
-    <p class="mt-10  text-[0.65rem] tracking-[0.2em] uppercase /30" data-animate data-delay="200">
+    <p class="mt-10  text-[0.65rem] tracking-[0.2em] uppercase">
       * Cupos limitados — se recomienda reservar con anticipación.
     </p>
 

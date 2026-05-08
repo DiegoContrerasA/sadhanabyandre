@@ -46,7 +46,7 @@ const faqSchema = {
     <div class="w-px h-16 bg-primary/25 mx-auto mb-16"></div>
 
     <!-- Header -->
-    <div class="text-center mb-16" data-animate>
+    <div class="text-center mb-16">
       <p class=" text-[0.65rem] tracking-[0.35em] uppercase text-primary mb-4">
         Preguntas Frecuentes
       </p>
@@ -58,7 +58,7 @@ const faqSchema = {
     <!-- Accordion -->
     <div>
       {faqs.map((faq, i) => (
-        <div class="faq-item border-b border-primary/15" data-animate data-delay={String(i * 75)}>
+        <div class="faq-item border-b border-primary/15">
           <button
             class="faq-trigger w-full flex items-center justify-between py-6 text-left gap-4 group"
             aria-expanded="false"

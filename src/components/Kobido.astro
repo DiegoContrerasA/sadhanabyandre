@@ -9,19 +9,19 @@ const beneficios = [
 ];
 ---
 
-<section id="kobido" class="bg-[var(--color-primary-light)] px-6 md:px-12 py-24 md:py-32">
+<section id="kobido" class="bg-primary-light px-6 md:px-12 py-24 md:py-32">
   <div class="max-w-7xl mx-auto">
 
     <!-- Top divider -->
-    <div class="w-px h-16 bg-[var(--color-primary)]/25 mx-auto mb-16"></div>
+    <div class="w-px h-16 bg-primary/25 mx-auto mb-16"></div>
 
     <!-- Header -->
-    <div class="text-center mb-16" data-animate>
-      <p class="[font-family:var(--font-body)] text-[0.65rem] tracking-[0.35em] uppercase text-[var(--color-primary)] mb-4">
+    <div class="text-center mb-16">
+      <p class=" text-[0.65rem] tracking-[0.35em] uppercase text-primary mb-4">
         Masaje Kobido
       </p>
-      <h2 class="[font-family:var(--font-heading)] text-4xl md:text-5xl lg:text-6xl font-light text-[var(--color-dark)]">
-        El arte del <em class="italic text-[var(--color-primary)]">lifting natural</em>
+      <h2 class=" text-4xl md:text-5xl lg:text-6xl font-light text-dark">
+        El arte del <em class="italic text-primary">lifting natural</em>
       </h2>
     </div>
 
@@ -29,9 +29,9 @@ const beneficios = [
     <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-center">
 
       <!-- Text — left -->
-      <div class="md:col-span-6" data-animate>
+      <div class="md:col-span-6">
 
-        <p class="[font-family:var(--font-body)] text-base md:text-lg leading-relaxed text-[var(--color-dark)]/60 mb-10">
+        <p class=" text-base md:text-lg leading-relaxed text-dark/60 mb-10">
           El Kobido, conocido como <em>"el camino ancestral de la belleza"</em>, es mucho más que un masaje facial. Es una ceremonia de rejuvenecimiento profundo que trabaja sobre los 16 músculos del rostro, estimulando la producción natural de colágeno y elastina.
         </p>
 
@@ -39,8 +39,8 @@ const beneficios = [
         <div class="space-y-6 mb-10">
           {beneficios.map((b) => (
             <div class="flex items-center gap-4">
-              <div class="w-1.5 h-1.5 rounded-full bg-[var(--color-primary)] shrink-0"></div>
-              <span class="[font-family:var(--font-heading)] text-xl md:text-2xl font-light text-[var(--color-dark)]">
+              <div class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></div>
+              <span class=" text-xl md:text-2xl font-light text-dark">
                 {b}
               </span>
             </div>
@@ -53,11 +53,11 @@ const beneficios = [
             href="https://wa.me/1234567890?text=Hola%20Andre%2C%20me%20gustar%C3%ADa%20reservar%20una%20sesi%C3%B3n%20de%20Kobido"
             target="_blank"
             rel="noopener noreferrer"
-            class="[font-family:var(--font-body)] text-sm tracking-widest uppercase bg-[var(--color-primary)] text-[var(--color-primary-light)] px-8 py-4 hover:bg-[var(--color-secondary)] transition-colors duration-300"
+            class=" text-sm tracking-widest uppercase bg-primary text-primary-light px-8 py-4 hover:bg-secondary transition-colors duration-300"
           >
             Reservar Sesión
           </a>
-          <span class="[font-family:var(--font-body)] text-sm text-[var(--color-dark)]/45">
+          <span class=" text-sm text-dark/45">
             Sesión individual · 60 min
           </span>
         </div>
@@ -65,7 +65,7 @@ const beneficios = [
       </div>
 
       <!-- Image — right -->
-      <div class="md:col-span-5 md:col-start-8" data-animate data-delay="150">
+      <div class="md:col-span-5 md:col-start-8">
         <div class="relative overflow-hidden">
           <img
             src={imgKobido.src}

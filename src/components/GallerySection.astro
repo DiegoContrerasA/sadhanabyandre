@@ -14,26 +14,10 @@ import img11 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.44 AM (1)
 import img12 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.44 AM (2).jpeg.jpg";
 import img13 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.44 AM 2.jpeg.jpg";
 import img14 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.45 AM.jpeg.jpg";
-import img15 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.45 AM (1).jpeg.jpg";
-import img16 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.45 AM (2).jpeg.jpg";
-import img17 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.46 AM.jpeg.jpg";
-import img18 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.46 AM (1).jpeg.jpg";
-import img19 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.46 AM (2).jpeg.jpg";
-import img20 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.47 AM.jpeg.jpg";
-import img21 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.47 AM (1).jpeg.jpg";
-import img22 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.47 AM (2).jpeg.jpg";
-import img23 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.48 AM.jpeg.jpg";
-import img24 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.48 AM (1).jpeg.jpg";
-import img25 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.48 AM (2).jpeg.jpg";
-import img26 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.49 AM.jpeg.jpg";
-import img27 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.49 AM (1).jpeg.jpg";
-import img28 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.49 AM (2).jpeg.jpg";
-import img29 from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.49 AM (3).jpeg.jpg";
-
 const pool = [
-  img01, img02, img03, img04, img05, img06, img07, img08, img09, img10,
-  img11, img12, img13, img14, img15, img16, img17, img18, img19, img20,
-  img21, img22, img23, img24, img25, img26, img27, img28, img29, img01,
+  img01, img02, img03, img04, img05,
+  img06, img07, img08, img09, img10,
+  img11, img12, img13, img14,
 ];
 
 // Bento pattern (repeats every 10 items on a 4-col grid)
@@ -55,62 +39,63 @@ const spanPattern = [
 ];
 
 const photos = pool.map((src, i) => ({
-  src: src.src,
-  alt: `Galería Sadhana by Andre — foto ${i + 1}`,
-  span: spanPattern[i % spanPattern.length],
+  src:    src.src,
+  width:  src.width,
+  height: src.height,
+  alt:    `Galería Sadhana by Andre — foto ${i + 1}`,
+  span:   spanPattern[i % spanPattern.length],
 }));
 ---
 
-<section id="galeria" class="bg-[var(--color-primary-light)] px-6 md:px-12 py-24 md:py-32">
+<section id="galeria" class="bg-primary-light px-6 md:px-12 py-24 md:py-32">
   <div class="max-w-7xl mx-auto">
 
     <!-- Top divider -->
-    <div class="w-px h-16 bg-[var(--color-primary)]/25 mx-auto mb-16"></div>
+    <div class="w-px h-16 bg-primary/25 mx-auto mb-16"></div>
 
     <!-- Header -->
-    <div class="text-center mb-16" data-animate>
-      <p class="[font-family:var(--font-body)] text-[0.65rem] tracking-[0.35em] uppercase text-[var(--color-primary)] mb-4">
+    <div class="text-center mb-16">
+      <p class=" text-[0.65rem] tracking-[0.35em] uppercase text-primary mb-4">
         Galería
       </p>
-      <h2 class="[font-family:var(--font-heading)] text-4xl md:text-5xl lg:text-6xl font-light text-[var(--color-dark)]">
+      <h2 class="[font-family:var(--font-heading)] text-4xl md:text-5xl lg:text-6xl font-light text-dark">
         Encuentro de<br />
-        <em class="italic text-[var(--color-primary)]">Bienestar 2026</em>
+        <em class="italic text-primary">Bienestar 2026</em>
       </h2>
-      <p class="[font-family:var(--font-body)] text-base text-[var(--color-dark)]/55 mt-6 max-w-lg mx-auto leading-relaxed">
+      <p class=" text-base text-dark/55 mt-6 max-w-lg mx-auto leading-relaxed">
         Imágenes del último evento realizado en el Estudio Āsana.
       </p>
     </div>
 
     <!-- Bento grid -->
-    <div class="grid grid-cols-2 md:grid-cols-4 auto-rows-[200px] gap-3 md:gap-4">
-      {photos.map((photo, i) => (
-        <div
-          class={`relative overflow-hidden cursor-pointer group ${photo.span.col}`}
-          data-animate
-          data-delay={String((i % 4) * 75)}
+    <div id="pswp-gallery" class="grid grid-cols-2 md:grid-cols-4 auto-rows-[200px] gap-3 md:gap-4">
+      {photos.map((photo) => (
+        <a
+          href={photo.src}
+          data-pswp-width={photo.width}
+          data-pswp-height={photo.height}
+          data-cropped="true"
+          class={`relative overflow-hidden cursor-zoom-in group ${photo.span.col}`}
         >
           <img
             src={photo.src}
             alt={photo.alt}
-            class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-75 grayscale-[15%] group-hover:grayscale-0"
+            class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-75 grayscale-[15%] group-hover:grayscale-0"
             loading="lazy"
           />
 
           <!-- Hover overlay -->
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-center justify-center bg-[var(--color-primary)]/20">
-            <div class="w-10 h-10 rounded-full bg-[var(--color-primary-light)]/80 flex items-center justify-center scale-75 group-hover:scale-100 transition-transform duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--color-primary)]">
-                <circle cx="11" cy="11" r="8"/>
-                <line x1="21" x2="16.65" y1="21" y2="16.65"/>
-                <line x1="11" x2="11" y1="8" y2="14"/>
-                <line x1="8" x2="14" y1="11" y2="11"/>
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center bg-primary/20">
+            <div class="w-10 h-10 rounded-full bg-primary-light/80 flex items-center justify-center scale-75 group-hover:scale-100 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
               </svg>
             </div>
           </div>
 
           <!-- Grain texture -->
           <div class="absolute inset-0 pointer-events-none opacity-[0.04] mix-blend-overlay grain-cell" aria-hidden="true"></div>
-        </div>
+        </a>
       ))}
     </div>
 
@@ -123,3 +108,16 @@ const photos = pool.map((src, i) => ({
     background-size: 150px 150px;
   }
 </style>
+
+<script>
+  import PhotoSwipeLightbox from 'photoswipe/lightbox';
+  import 'photoswipe/style.css';
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '#pswp-gallery',
+    children: 'a',
+    pswpModule: () => import('photoswipe'),
+  });
+
+  lightbox.init();
+</script>
