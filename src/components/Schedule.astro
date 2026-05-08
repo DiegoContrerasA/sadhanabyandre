@@ -4,34 +4,34 @@ const clases = [
     dia: "Martes",
     hora: "7:00 am",
     virtual: true,
-    tag: "En línea",
-    descripcion: "Yoga en secuencias.",
+    tag: "Presencial",
+    descripcion: "Yoga en secuencias",
   },
   {
     dia: "Jueves",
     hora: "6:15 pm",
     virtual: false,
     tag: "Presencial",
-    descripcion: "Multinivel.",
+    descripcion: "Multinivel",
   },
   {
     dia: "Viernes",
     hora: "9:00 am",
     virtual: false,
     tag: "Presencial",
-    descripcion: "Masterclases",
+    descripcion: "Masterclass",
   },
   {
     dia: "Sábado",
     hora: "7:00 am",
     virtual: false,
     tag: "Presencial",
-    descripcion: "Ashtanga base.",
+    descripcion: "Ashtanga base",
   },
 ];
 ---
 
-<section id="horarios" class="bg-primary-light px-6 md:px-12 py-24 md:py-32">
+<section id="horarios" class="bg-white px-6 md:px-12 py-24 md:py-32">
   <div class="max-w-7xl mx-auto">
 
     <!-- Top divider -->
@@ -42,7 +42,7 @@ const clases = [
       <p class=" text-[0.65rem] tracking-[0.35em] uppercase text-primary mb-4">
         Horarios
       </p>
-      <h2 class=" text-4xl md:text-5xl lg:text-6xl font-light ">
+      <h2 class=" text-4xl md:text-5xl lg:text-6xl font-light text-zinc-800">
         Clases <em class="italic text-primary">grupales</em>
       </h2>
     </div>
@@ -50,11 +50,11 @@ const clases = [
     <!-- Class list -->
     <div class="flex flex-col" data-animate data-delay="150">
       {clases.map((clase) => (
-        <div class="group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-0 py-10 border-t">
+        <div class="group flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-0 py-10 border-t border-primary/15">
 
           <!-- Day + Time -->
-          <div class="sm:w-48 flex-shrink-0">
-            <p class=" text-2xl md:text-3xl font-light ">
+          <div class="sm:w-32 shrink-0">
+            <p class=" text-2xl md:text-3xl font-light text-primary ">
               {clase.dia}
             </p>
             <p class=" text-sm tracking-wide mt-0.5">
@@ -63,25 +63,25 @@ const clases = [
           </div>
 
           <!-- Divider vertical (desktop) -->
-          <div class="hidden sm:block w-px h-10  flex-shrink-0 mx-10" aria-hidden="true"></div>
+          <div class="hidden sm:block w-px h-10 bg-primary/15 flex-shrink-0 mx-10" aria-hidden="true"></div>
 
           <!-- Description -->
           <div class="flex-1">
-            <p class=" text-xl leading-relaxed">
+            <span class="text-zinc-800 text-[0.6rem] font-medium tracking-widest uppercase block">
+              Clase
+            </span>
+            <p class=" text-2xl md:text-3xl leading-relaxed text-primary font-light">
               {clase.descripcion}
             </p>
           </div>
 
           <!-- Badge + CTA -->
-          <div class="flex items-center gap-3 sm:ml-8 flex-shrink-0">
-            <span class={` inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[0.65rem] tracking-widest uppercase border ${clase.virtual ? 'border-secondary/40 text-secondary' : 'border-[var(--color-dark)]/15 /45'}`}>
-              <span class={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${clase.virtual ? 'bg-secondary' : 'bg-[var(--color-dark)]/30'}`}></span>
-              {clase.tag}
-            </span>
 
             <a
-              href="#reserva"
-              class=" inline-flex items-center gap-2 px-5 py-2 rounded-full border border-primary/25 text-primary text-xs tracking-widest uppercase transition-all duration-300 hover:bg-primary hover:text-[var(--color-primary-light)] hover:border-primary whitespace-nowrap"
+              href={`https://wa.me/573122861377?text=¡Hola! Quiero reservar mi cupo para la clase de ${clase.descripcion} el día ${clase.dia} a las ${clase.hora}.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class=" inline-flex w-fit  items-center gap-2 px-5 py-3 rounded-full border border-primary/25 text-primary text-xs tracking-widest uppercase transition-all duration-300 hover:bg-primary hover:text-primary-light hover:border-primary whitespace-nowrap"
             >
               Reservar
               <svg width="12" height="12" viewBox="0 0 18 18" fill="none" aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-0.5">
@@ -89,10 +89,8 @@ const clases = [
               </svg>
             </a>
           </div>
-
-        </div>
       ))}
-      <div class="border-t "></div>
+      <div class="border-t border-primary/15"></div>
     </div>
 
     <!-- Footer note -->

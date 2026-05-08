@@ -2,7 +2,7 @@
 import bgImg from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.45 AM.jpeg.jpg";
 ---
 
-<section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+<section class="relative h-dvh flex items-center justify-center overflow-hidden">
 
   <!-- Background image -->
   <img
@@ -13,7 +13,7 @@ import bgImg from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.45 AM.jpe
   />
 
   <!-- Primary color overlay -->
-  <div class="absolute inset-0 bg-[var(--color-primary)]/70"></div>
+  <div class="absolute inset-0 bg-primary/70"></div>
 
   <!-- Grain -->
   <div class="absolute inset-0 pointer-events-none opacity-[0.06] mix-blend-overlay grain-cta" aria-hidden="true"></div>
@@ -29,29 +29,29 @@ import bgImg from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.45 AM.jpe
           <path d="M20 3v4"/><path d="M22 5h-4"/>
           <path d="M4 17v2"/><path d="M5 18H3"/>
         </svg>
-        <span class="[font-family:var(--font-body)] text-xs tracking-[0.25em] uppercase text-white/80">
+        <span class=" text-xs tracking-[0.25em] uppercase text-white/80">
           Primera clase gratuita
         </span>
       </div>
 
       <!-- Heading -->
-      <h2 class="[font-family:var(--font-heading)] text-5xl md:text-6xl lg:text-7xl font-light text-white leading-tight mb-6">
+      <h2 class=" text-5xl md:text-6xl lg:text-7xl font-light text-white leading-tight mb-6">
         Reserva tu<br />
         <em class="italic">clase de prueba</em>
       </h2>
 
       <!-- Description -->
-      <p class="[font-family:var(--font-body)] text-base md:text-lg text-white/80 leading-relaxed mb-10 max-w-lg mx-auto">
+      <p class=" text-base md:text-lg text-white/80 leading-relaxed mb-10 max-w-lg mx-auto">
         No necesitas experiencia previa. Solo un mat, ropa cómoda y las ganas de comenzar. Tu primera clase es completamente gratis.
       </p>
 
       <!-- Buttons -->
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
         <a
-          href="https://wa.me/1234567890?text=Hola%20Andre%2C%20me%20gustar%C3%ADa%20reservar%20mi%20clase%20gratuita"
+          href="https://wa.me/573122861377?text=¡Hola! Quiero hacer una clase de prueba gratuita. ¿Qué días y horarios tienes disponibles?"
           target="_blank"
           rel="noopener noreferrer"
-          class="[font-family:var(--font-body)] inline-flex items-center gap-2 text-sm tracking-widest uppercase bg-white text-[var(--color-primary)] px-10 py-4 hover:bg-white/90 transition-all duration-300"
+          class=" inline-flex items-center gap-2 text-sm tracking-widest uppercase bg-white text-primary px-10 py-4 hover:bg-white/90 transition-all duration-300"
         >
           Reservar ahora
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -60,7 +60,7 @@ import bgImg from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.45 AM.jpe
         </a>
         <a
           href="#servicios"
-          class="[font-family:var(--font-body)] text-sm tracking-widest uppercase border border-white/50 text-white px-10 py-4 hover:bg-white/10 transition-all duration-300"
+          class=" text-sm tracking-widest uppercase border border-white/50 text-white px-10 py-4 hover:bg-white/10 transition-all duration-300"
         >
           Ver servicios
         </a>
@@ -75,5 +75,6 @@ import bgImg from "../assets/images/WhatsApp Image 2026-04-17 at 11.52.45 AM.jpe
   .grain-cta {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     background-size: 180px 180px;
+    
   }
 </style>

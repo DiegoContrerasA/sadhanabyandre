@@ -6,3 +6,11 @@
   --color-secondary: #C969B7;
   --color-neutral: #DFC8CE;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 2rem;
+}
