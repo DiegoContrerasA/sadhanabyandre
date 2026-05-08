@@ -25,7 +25,19 @@ const faqs = [
     respuesta: "Sí, puedes cancelar hasta 12 horas antes de la clase sin ningún costo. Para cancelaciones tardías o ausencias, te pido avisarme por WhatsApp.",
   },
 ];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.pregunta,
+    "acceptedAnswer": { "@type": "Answer", "text": f.respuesta }
+  }))
+};
 ---
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
 <section id="faq" class="px-6 md:px-12 py-24 md:py-32">
   <div class="max-w-7xl mx-auto">
