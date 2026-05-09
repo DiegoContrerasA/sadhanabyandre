@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import aboutImg from "../assets/images/me.jpeg";
 ---
 
@@ -7,11 +8,13 @@ import aboutImg from "../assets/images/me.jpeg";
 
       <div data-animate class="relative max-w-md mx-auto lg:max-w-none">
           <div class="absolute  w-full h-full border border-primary top-[20px] left-[20px]"></div>
-       <img
-          src={aboutImg.src}
+       <Image
+          src={aboutImg}
           alt="Andre, instructora de yoga"
+          width={560}
           fetchpriority="high"
-          class="w-full object-cover aspect-4/5 relative  z-1"
+          loading="eager"
+          class="w-full object-cover aspect-4/5 relative z-1"
         />
       </div>
     <div>

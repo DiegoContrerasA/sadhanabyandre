@@ -85,6 +85,9 @@ const stats = [
         <img
           src={logo.src}
           alt="Sadhana by Andre"
+          fetchpriority="high"
+          loading="eager"
+          decoding="async"
           class="hero-item w-72 md:w-96 object-contain drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)]"
           style="animation-delay: 0.1s"
         />
@@ -142,21 +145,26 @@ const stats = [
     to   { opacity: 1; transform: translateY(0); }
   }
   .hero-item {
-    opacity: 0;
-    animation: hero-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    opacity: 1;
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (min-width: 768px) {
+    .hero-item {
+      opacity: 0;
+      animation: hero-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+  }
+  @media (min-width: 768px) and (prefers-reduced-motion: reduce) {
     .hero-item { opacity: 1; animation: none; }
   }
 
   /* Background images — mobile uses portrait crop, desktop uses landscape */
   #hero-header {
-    background-image: url('../assets/images/hero-mobile.png');
+    background-image: url('../assets/images/hero-mobile.webp');
     background-position: center top;
   }
   @media (min-width: 768px) {
     #hero-header {
-      background-image: url('../assets/images/hero.png');
+      background-image: url('../assets/images/hero.webp');
       background-position: center center;
     }
   }

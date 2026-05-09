@@ -1,28 +1,110 @@
 export const es = {
 
+  _meta: {
+    title:       "Sadhana by Andre | Yoga Grupal, Prenatal y Facial en Colombia",
+    description: "Únete a las clases de yoga de Andre, instructora certificada. Yoga grupal, personalizado, prenatal, post parto y yoga facial. Más de 500 alumnas felices.",
+    locale:      "es_CO",
+    lang:        "es-CO",
+  },
+
   nav: {
-    about:     "Sobre mí",
-    services:  "Servicios",
-    kobido:    "Kobido",
-    schedule:  "Horarios",
-    faq:       "Faq",
-    openMenu:  "Abrir menú",
-    closeMenu: "Cerrar menú",
+    links: [
+      { label: "Sobre mí",  href: "#sobre-mi"  },
+      { label: "Servicios", href: "#servicios"  },
+      { label: "Kobido",    href: "#kobido"     },
+      { label: "Horarios",  href: "#horarios"   },
+      { label: "Faq",       href: "#faq"        },
+    ],
+    openMenu:       "Abrir menú",
+    closeMenu:      "Cerrar menú",
+    ariaNav:        "Navegación principal",
+    ariaNavMobile:  "Menú de navegación",
+  },
+
+  hero: {
+    logoAlt:     "Sadhana by Andre",
+    byline:      "by andre",
+    tagline1:    "Respira · Estírate",
+    tagline2:    "Fortalece tu ser interior",
+    cta:         "Reservar clase",
+    waMessage:   "¡Hola Andre! Quiero saber más información sobre tus clases y servicios 😊",
+    stats: [
+      { value: "+7", label: "años de experiencia" },
+      { value: "+5", label: "certificaciones internacionales" },
+    ],
   },
 
   about: {
     label:      "Sobre Mí",
     heading:    "El camino hacia",
     headingEm:  "tu equilibrio",
-    p1: "Con más de 12 años guiando prácticas de Hatha y Vinyasa Yoga, he dedicado mi vida a crear espacios donde el cuerpo y la mente encuentren su ritmo natural.",
-    p2: "Formada en India y Japón, combino la tradición del yoga con el arte milenario del masaje Kobido, ofreciendo una experiencia de bienestar integral que trasciende lo físico.",
-    p3: "Mi filosofía es simple: cada cuerpo tiene su propia sabiduría. Mi trabajo es ayudarte a escucharla.",
+    imgAlt:     "Andre, instructora de yoga",
+    p1: "Sadhana nace de mi propio camino de búsqueda, escucha y reconexión con el cuerpo.",
+    p2: "A lo largo de los 12 años practicando entendí que el bienestar no se trata de forzar, corregir o exigir, sino de habitar el cuerpo con presencia, respeto y honestidad.",
+    p3: "Mi recorrido en el yoga comenzó desde el movimiento, y con el tiempo se fue expandiendo hacia prácticas más profundas de autocuidado, acompañando especialmente procesos femeninos, de transformación y de retorno a lo esencial. El yoga prenatal y postparto, el yoga facial y el masaje Kobido llegaron como una extensión natural de esta escucha, integrando el tacto consciente como una forma de sanación y ritual.",
+    p4: "Hoy, Sadhana es un espacio para cuerpos reales y procesos reales. Un lugar donde el movimiento, la respiración y el autocuidado se convierten en herramientas para volver a ti, honrar tu ritmo y cultivar una relación más amorosa con tu cuerpo.",
+    quote: "Mi filosofía es simple: cada cuerpo tiene su propia sabiduría. Mi trabajo es ayudarte a escucharla.",
+  },
+
+  positions: {
+    label:      "La Práctica",
+    heading:    "Cada postura,",
+    headingEm:  "una conversación",
+    poses: [
+      { alt: "Sirsasana – postura invertida",   label: "Fuerza"       },
+      { alt: "Estiramiento lateral en exterior", label: "Flexibilidad" },
+      { alt: "Estiramiento lateral en interior", label: "Restauración" },
+    ],
+  },
+
+  schedule: {
+    label:       "Horarios",
+    heading:     "Clases",
+    headingEm:   "grupales",
+    classLabel:  "Clase",
+    reserveBtn:  "Reservar",
+    tagPresencial: "Presencial",
+    tagOnline:     "En línea",
+    note:        "* Cupos limitados — se recomienda reservar con anticipación.",
+    waMessage:   (name: string, day: string, time: string) =>
+      `¡Hola! Quiero reservar mi cupo para la clase de ${name} el día ${day} a las ${time}.`,
+    items: [
+      {
+        day:         "Martes",
+        time:        "7:00 am",
+        online:      true,
+        name:        "Yoga en Secuencias",
+        description: "También conocido como yoga escalonado. En esta clase creamos una especie de coreografía a través de secuencias de posturas que repetimos varias veces, ayudando a mejorar la flexibilidad, coordinación, resistencia y memoria corporal mientras el cuerpo gana más confianza en el movimiento.",
+      },
+      {
+        day:         "Jueves",
+        time:        "6:15 pm",
+        online:      false,
+        name:        "Yoga Multinivel",
+        description: "Una clase de vinyasa diseñada para adaptarse a cada persona que llega al mat. Cada práctica puede verse diferente según tu cuerpo, nivel y necesidades, creando un espacio seguro, amoroso y retador al mismo tiempo.",
+      },
+      {
+        day:         "Viernes",
+        time:        "9:00 am",
+        online:      false,
+        name:        "Masterclass",
+        description: "Cada clase se enfoca en una postura específica para que no solo aprendas a \"hacerla\", sino realmente a comprenderla. Exploramos diferentes entradas, ajustes, activaciones y alineación para cuidar el cuerpo mientras avanzas en tu práctica de forma consciente y segura.",
+      },
+      {
+        day:         "Sábado",
+        time:        "7:00 am",
+        online:      false,
+        name:        "Ashtanga Based",
+        description: "Una práctica inspirada en la estructura del Ashtanga, pero con la creatividad y fluidez del Vinyasa. Una combinación diseñada para desarrollar fuerza, resistencia, equilibrio y control corporal mientras disfrutas el movimiento.",
+      },
+    ],
   },
 
   services: {
     label:     "Servicios",
     heading:   "Encuentra",
     headingEm: "tu práctica",
+    imgAlt:    "Andre instructora de yoga en postura invertida",
     items: [
       {
         num:         "01",
@@ -40,13 +122,13 @@ export const es = {
         num:         "03",
         name:        "Yoga Prenatal",
         duration:    "60 min",
-        description: "Una práctica suave y amorosa para acompañar cada etapa del embarazo. Fortalece tu cuerpo, calma tu mente y conecta con el ser que crece en ti.",
+        description: "Una práctica suave y amorosa para acompañar cada etapa del embarazo. Fortalece tu cuerpo, calma tu mente y conecta con el ser que crece en ti.\n\nNos preparamos física y mentalmente para el parto a través de movimiento consciente, ejercicios de respiración y técnicas que ayudan a crear más confianza, conexión y bienestar durante esta etapa.",
       },
       {
         num:         "04",
         name:        "Yoga Post Parto",
         duration:    "60 min",
-        description: "Un regreso suave al movimiento después del parto. Recupera tu fuerza, reconecta con tu cuerpo y encuentra calma en esta nueva etapa.",
+        description: "Un regreso suave y consciente al movimiento después del parto. Recupera tu fuerza, reconecta con tu cuerpo y encuentra calma y estabilidad en esta nueva etapa.\n\nTrabajamos activación de core y piso pélvico con técnicas hipopresivas, respiración y movimiento funcional para apoyar la recuperación del cuerpo de forma segura y progresiva.",
       },
       {
         num:         "05",
@@ -57,37 +139,6 @@ export const es = {
     ],
   },
 
-  kobido: {
-    label:      "Masaje Kobido",
-    heading:    "El arte del",
-    headingEm:  "lifting natural",
-    body:       "El Kobido, conocido como «el camino ancestral de la belleza», es mucho más que un masaje facial. Es una ceremonia de rejuvenecimiento profundo que trabaja sobre los 16 músculos del rostro, estimulando la producción natural de colágeno y elastina.",
-    benefits: [
-      "Lifting natural del rostro",
-      "Estimulación de colágeno",
-      "Reducción de tensión mandibular",
-      "Luminosidad y rejuvenecimiento",
-    ],
-    cta:    "Reservar Sesión",
-    ctaSub: "Sesión individual · 60 min",
-  },
-
-  schedule: {
-    label:      "Horarios",
-    heading:    "Clases",
-    headingEm:  "grupales",
-    classLabel: "Clase",
-    tag:        "Presencial",
-    reserveBtn: "Reservar",
-    note:       "* Cupos limitados — se recomienda reservar con anticipación.",
-    items: [
-      { day: "Martes",  time: "7:00 am",  tag: "Presencial", description: "Yoga en secuencias" },
-      { day: "Jueves",  time: "6:15 pm",  tag: "Presencial", description: "Multinivel"         },
-      { day: "Viernes", time: "9:00 am",  tag: "Presencial", description: "Masterclass"        },
-      { day: "Sábado",  time: "7:00 am",  tag: "Presencial", description: "Ashtanga based"     },
-    ],
-  },
-
   cta: {
     badge:        "Primera clase gratuita",
     heading:      "Reserva tu",
@@ -95,13 +146,72 @@ export const es = {
     body:         "No necesitas experiencia previa. Solo un mat, ropa cómoda y las ganas de comenzar. Tu primera clase es completamente gratis.",
     primaryBtn:   "Reservar ahora",
     secondaryBtn: "Ver servicios",
+    waMessage:    "¡Hola! Quiero hacer una clase de prueba gratuita. ¿Qué días y horarios tienes disponibles?",
   },
 
-  gallery: {
-    label:     "Galería",
-    heading:   "Encuentro de",
-    headingEm: "Bienestar 2026",
-    body:      "Imágenes del último evento realizado.",
+  yogaFacial: {
+    label:      "Yoga Facial",
+    heading:    "El gym natural",
+    headingEm:  "de tu rostro",
+    body:       "Es una técnica natural que tonifica y fortalece los músculos del rostro, cuello y escote, mejorando la firmeza, reduciendo la flacidez y atenuando arrugas. Al estimular la circulación sanguínea y oxigenar los tejidos, proporciona una apariencia más radiante, destensa la mandíbula y reduce el estrés, promoviendo un aspecto más joven y relajado.",
+    cta:        "Quiero saber más",
+    waMessage:  "¡Hola Andre! Me interesa saber más sobre el Yoga Facial.",
+    benefits: [
+      {
+        title: "Rejuvenecimiento y Tonificación",
+        desc:  "Fortalece y eleva los músculos faciales, lo que ayuda a combatir la flacidez, definir el óvalo facial y suavizar líneas finas.",
+      },
+      {
+        title: "Piel Radiante y Saludable",
+        desc:  "Al mejorar la circulación sanguínea, aumenta la oxigenación y el aporte de nutrientes, logrando una piel más tersa, brillante y saludable.",
+      },
+      {
+        title: "Reducción de la Tensión",
+        desc:  "Libera la tensión acumulada en zonas como la frente, mandíbula y entrecejo, lo que ayuda a disminuir la apariencia de cansancio y estrés en el rostro.",
+      },
+      {
+        title: "Efecto Antiedad Natural",
+        desc:  "Ayuda a prevenir y disminuir los signos de envejecimiento, especialmente útil a partir de los 30 años.",
+      },
+      {
+        title: "Mejora la Circulación y el Drenaje",
+        desc:  "Ayuda a reducir la retención de líquidos, bolsas y ojeras.",
+      },
+    ],
+  },
+
+  kobido: {
+    label:      "Masaje Kobido",
+    heading:    "El arte del",
+    headingEm:  "lifting natural",
+    body:       "Conocido como el «lifting facial japonés», es una técnica milenaria que rejuvenece el rostro de forma natural, reduciendo arrugas y líneas de expresión mediante estimulación profunda de músculos y tejidos. Sus beneficios incluyen el aumento de la producción de colágeno y elastina, la mejora de la circulación sanguínea, el drenaje linfático para reducir bolsas y ojeras, y una intensa relajación, ofreciendo resultados visibles desde la primera sesión.",
+    imgAlt:     "Detalle de manos realizando masaje Kobido facial con aceites esenciales",
+    cta:        "Reservar Sesión",
+    ctaSub:     "Sesión individual · 120 min",
+    ctaWhatsApp: "¿Tienes dudas? Hablamos por WhatsApp",
+    waMessage:  "¡Hola Andre! Tengo algunas dudas sobre el masaje Kobido y me gustaría saber más antes de reservar mi sesión.",
+    benefits: [
+      {
+        title: "Efecto Lifting Natural",
+        desc:  "Reafirma los músculos faciales, redefiniendo el contorno facial sin cirugías.",
+      },
+      {
+        title: "Rejuvenecimiento y Luminosidad",
+        desc:  "Atenúa arrugas, líneas de expresión y combate la flacidez, aportando frescura y luminosidad a la piel.",
+      },
+      {
+        title: "Mejora la Circulación y Producción de Colágeno",
+        desc:  "Estimula la síntesis de colágeno y elastina, fortaleciendo la estructura dérmica y mejorando la textura de la piel.",
+      },
+      {
+        title: "Drenaje Linfático y Detox",
+        desc:  "Ayuda a eliminar toxinas y reduce la retención de líquidos, disminuyendo la hinchazón facial y las ojeras.",
+      },
+      {
+        title: "Relajación y Antiestrés",
+        desc:  "Alivia tensiones acumuladas en la mandíbula, cuello y cabeza, proporcionando un profundo bienestar físico y mental.",
+      },
+    ],
   },
 
   events: {
@@ -129,10 +239,18 @@ export const es = {
     ],
   },
 
+  gallery: {
+    label:     "Galería",
+    heading:   "Encuentro de",
+    headingEm: "Bienestar 2026",
+    body:      "Imágenes del último evento realizado.",
+    imgAlt:    (n: number) => `Galería Sadhana by Andre — foto ${n}`,
+  },
+
   faq: {
     label:     "Preguntas Frecuentes",
-    heading:   "Todo lo que",
-    headingEm: "necesitas saber",
+    heading:   "Preguntas",
+    headingEm: "Frecuentes",
     items: [
       {
         question: "¿Necesito experiencia previa para comenzar?",
@@ -140,7 +258,7 @@ export const es = {
       },
       {
         question: "¿Qué debo llevar a mi primera clase?",
-        answer:   "Ropa cómoda que permita movimiento, agua y ganas de estar presente. Los tapetes están disponibles en el espacio, aunque si tienes el tuyo propio puedes traerlo.",
+        answer:   "Ropa cómoda que permita movimiento, agua y ganas de estar presente. El mat es obligatorio — recuerda traer el tuyo.",
       },
       {
         question: "¿Cómo funciona el masaje Kobido?",
@@ -165,13 +283,14 @@ export const es = {
     label:     "Conecta conmigo",
     heading:   "Sigamos",
     headingEm: "en contacto",
-    copyright: "Sadhana by Andre · Todos los derechos reservados",
+    imgAlt:    "Andre — Sadhana by Andre",
+    copyright: (year: number) => `© ${year} Sadhana by Andre · Todos los derechos reservados`,
     tagline:   "Hecho con intención",
     socials: [
-      { label: "Instagram", href: "https://instagram.com/sadhanabyandre" },
-      { label: "Facebook",  href: "https://facebook.com/sadhanabyandre"  },
-      { label: "TikTok",    href: "https://tiktok.com/@sadhanabyandre"   },
-      { label: "YouTube",   href: "https://youtube.com/@sadhanabyandre"  },
+      { label: "Instagram", href: "https://www.instagram.com/sadhanabyandre" },
+      { label: "Facebook",  href: "https://www.facebook.com/profile.php?id=61584988191074&locale=es_LA" },
+      { label: "TikTok",    href: "https://www.tiktok.com/@sadhanabyandre" },
+      { label: "YouTube",   href: "https://www.youtube.com/@SadhanaByAndreC" },
     ],
   },
 
