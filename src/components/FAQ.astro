@@ -47,10 +47,10 @@ const faqSchema = {
 
     <!-- Header -->
     <div class="text-center mb-16">
-      <p class=" text-[0.65rem] tracking-[0.35em] uppercase text-primary mb-4">
+      <p data-animate class=" text-[0.65rem] tracking-[0.35em] uppercase text-primary mb-4">
         Preguntas Frecuentes
       </p>
-      <h2 class="text-4xl md:text-5xl lg:text-6xl font-light text-zinc-800">
+      <h2 data-animate data-delay="100" class="text-4xl md:text-5xl lg:text-6xl font-light text-zinc-800">
         Preguntas <em class="italic text-primary">Frecuentes</em>
       </h2>
     </div>
@@ -58,7 +58,7 @@ const faqSchema = {
     <!-- Accordion -->
     <div>
       {faqs.map((faq, i) => (
-        <div class="faq-item border-b border-primary/15">
+        <div data-animate data-delay={i * 60} class="faq-item border-b border-primary/15">
           <button
             class="faq-trigger w-full flex items-center justify-between py-6 text-left gap-4 group"
             aria-expanded="false"

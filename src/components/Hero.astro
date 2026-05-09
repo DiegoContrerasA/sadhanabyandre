@@ -79,41 +79,43 @@ const stats = [
   <div class="absolute inset-0 bg-black/40 z-0"></div>
 
   <!-- Hero content — logo + tagline -->
-  <div class="relative z-1 flex flex-col items-center md:items-start  justify-between sm:justify-start md:justify-center py-28 md:py-0 px-12 max-w-7xl mx-auto  h-full">
-    <!-- Logo -->
-  <div class="flex flex-col gap-5 md:gap-10">
-    <div class="flex flex-col items-center md:items-start">
-      <img
-      src={logo.src}
-      alt="Sadhana by Andre"
-      class="w-72 md:w-96 object-contain drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)]"
-    />
-    <!-- "by andre" caption -->
-    <p class="text-white/60 text-xs tracking-[0.35em] uppercase">by andre</p>
-  </div>
+  <div class="relative z-1 flex flex-col items-center md:items-start justify-between sm:justify-start md:justify-center py-28 md:py-0 px-12 max-w-7xl mx-auto h-full">
+    <div class="flex flex-col gap-5 md:gap-10">
+      <div class="flex flex-col items-center md:items-start">
+        <img
+          src={logo.src}
+          alt="Sadhana by Andre"
+          class="hero-item w-72 md:w-96 object-contain drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)]"
+          style="animation-delay: 0.1s"
+        />
+        <p class="hero-item text-white/60 text-xs tracking-[0.35em] uppercase" style="animation-delay: 0.25s">
+          by andre
+        </p>
+      </div>
 
-    <!-- Tagline — 2 líneas -->
-    <div class="space-y-1 text-white md:text-white/80 text-center md:text-left">
-      <p class="text-lg md:text-xl font-light tracking-[0.18em] uppercase [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
-        Respira · Estírate
-      </p>
-      <p class="text-base md:text-lg font-light tracking-[0.18em] uppercase [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
-        Fortalece tu ser interior
-      </p>
+      <!-- Tagline — 2 líneas -->
+      <div class="space-y-1 text-white md:text-white/80 text-center md:text-left">
+        <p class="hero-item text-lg md:text-xl font-light tracking-[0.18em] uppercase [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]" style="animation-delay: 0.4s">
+          Respira · Estírate
+        </p>
+        <p class="hero-item text-base md:text-lg font-light tracking-[0.18em] uppercase [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]" style="animation-delay: 0.52s">
+          Fortalece tu ser interior
+        </p>
+      </div>
     </div>
-  </div>
 
     <!-- CTA -->
     <a
       href="#servicios"
-      class="my-10 inline-flex items-center justify-center px-8 h-[52px] text-xs tracking-[0.28em] uppercase bg-primary text-white transition-opacity duration-300 hover:opacity-80"
+      class="hero-item my-10 inline-flex items-center justify-center px-8 h-[52px] text-xs tracking-[0.28em] uppercase bg-primary text-white transition-opacity duration-300 hover:opacity-80"
+      style="animation-delay: 0.65s"
     >
       Reservar clase
     </a>
   </div>
 
   <!-- Stats bar — bottom -->
-  <div class="absolute bottom-0 inset-x-0 z-10">
+  <div class="hero-item absolute bottom-0 inset-x-0 z-10" style="animation-delay: 0.75s">
     <div class="flex divide-x divide-white/20 bg-black/30 backdrop-blur-sm">
       {stats.map(s => (
         <div class="flex-1 flex flex-col items-center justify-center py-5 px-4 gap-0.5">
@@ -131,6 +133,19 @@ const stats = [
 </header>
 
 <style>
+
+  /* Hero entrance animation */
+  @keyframes hero-in {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-item {
+    opacity: 0;
+    animation: hero-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-item { opacity: 1; animation: none; }
+  }
 
   /* Background images — mobile uses portrait crop, desktop uses landscape */
   #hero-header {

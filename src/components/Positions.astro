@@ -18,10 +18,10 @@ const poses = [
 
     <!-- Header -->
     <div class="text-center mb-20">
-      <p class="text-[0.65rem] tracking-[0.35em] uppercase text-primary mb-4">
+      <p data-animate class="text-[0.65rem] tracking-[0.35em] uppercase text-primary mb-4">
         La Práctica
       </p>
-      <h2 class="text-4xl md:text-5xl lg:text-6xl font-light">
+      <h2 data-animate data-delay="100" class="text-4xl md:text-5xl lg:text-6xl font-light">
         Cada postura, <em class="italic text-primary">una conversación</em>
       </h2>
     </div>
@@ -29,7 +29,7 @@ const poses = [
     <!-- Grid — 3 columnas -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 items-start">
       {poses.map((p, i) => (
-        <div class={`group relative overflow-hidden aspect-[3/4] ${i === 1 ? 'md:mt-10' : ''}`}>
+        <div data-animate data-delay={i * 100} class={`group relative overflow-hidden aspect-[3/4] ${i === 1 ? 'md:mt-10' : ''}`}>
           <img
             src={p.src.src}
             alt={p.alt}

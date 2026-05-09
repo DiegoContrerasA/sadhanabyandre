@@ -93,6 +93,25 @@ const schema = {
   </head>
   <body>
     <slot />
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -48px 0px' }
+      );
+
+      document.querySelectorAll('[data-animate]').forEach(el => {
+        const delay = (el as HTMLElement).dataset.delay;
+        if (delay) (el as HTMLElement).style.transitionDelay = `${delay}ms`;
+        observer.observe(el);
+      });
+    </script>
   </body>
 </html>
 

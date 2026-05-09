@@ -48,10 +48,10 @@ const servicios = [
 
     <!-- Header -->
     <div class="text-center mb-20">
-      <p class=" text-[0.65rem] tracking-[0.35em] uppercase text-primary mb-4">
+      <p data-animate class=" text-[0.65rem] tracking-[0.35em] uppercase text-primary mb-4">
         Servicios
       </p>
-      <h2 class=" text-4xl md:text-5xl lg:text-6xl font-light">
+      <h2 data-animate data-delay="100" class=" text-4xl md:text-5xl lg:text-6xl font-light">
         Encuentra <em class="italic text-primary">tu práctica</em>
       </h2>
     </div>
@@ -60,7 +60,7 @@ const servicios = [
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
 
       <!-- Sticky image — hidden on mobile -->
-      <div class="hidden lg:block" >
+      <div data-animate class="hidden lg:block" >
         <div class="sticky top-24">
           <img
             src={servicesImg.src}
@@ -74,6 +74,7 @@ const servicios = [
       <div class="">
         {servicios.map((s, i) => (
           <div
+            data-animate data-delay={i * 80}
             class="py-10 border-t border-dark/10 group"
           >
             <div class="flex items-start justify-between mb-4">
