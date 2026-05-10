@@ -1,18 +1,16 @@
 ---
-import logo from "../assets/images/logo.png";
+import logo from "@/assets/images/logo.png";
+import { useTranslations, getLang } from "@/i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
-const links = [
-  { label: "Sobre mí",             href: "#sobre-mi" },
-  { label: "Servicios",            href: "#servicios" },
-  { label: "Kobido",               href: "#kobido" },
-  { label: "Horarios",             href: "#horarios" },
-  { label: "Faq", href: "#faq" },
-];
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+const esUrl = getRelativeLocaleUrl("es", "");
+const enUrl = getRelativeLocaleUrl("en", "");
+const nav = t("nav");
+const hero = t("hero");
 
-const stats = [
-  { value: "+7",  label: "años de experiencia" },
-  { value: "+5",  label: "certificaciones internacionales" },
-];
+const wa = (msg: string) => `https://wa.me/573122861377?text=${encodeURIComponent(msg)}`;
 ---
 
 <header id="hero-header" class="relative h-dvh w-full bg-cover bg-center overflow-hidden">
@@ -20,12 +18,12 @@ const stats = [
   <nav
     id="navbar"
     class="fixed inset-x-0 top-0 z-50 flex justify-center items-center transition-all duration-500 px-8 h-20 backdrop-blur-[8px]"
-    aria-label="Navegación principal"
+    aria-label={nav.ariaNav}
   >
 
       <!-- Desktop links -->
       <ul class="hidden md:flex items-center gap-10 list-none" role="list">
-        {links.map(l => (
+        {nav.links.map(l => (
           <li>
             <a
               href={l.href}
@@ -37,15 +35,31 @@ const stats = [
         ))}
       </ul>
 
+      <!-- Desktop lang toggle -->
+      <div class="absolute right-8 hidden md:flex items-center gap-2 text-[11px] tracking-[0.22em] uppercase">
+        <a href={esUrl} class={`transition-colors duration-300 [text-shadow:0_1px_8px_rgba(0,0,0,0.5)] ${lang === 'es' ? 'text-white' : 'text-white/40 hover:text-white/70'}`}>ES</a>
+        <span class="text-white/25">|</span>
+        <a href={enUrl} class={`transition-colors duration-300 [text-shadow:0_1px_8px_rgba(0,0,0,0.5)] ${lang === 'en' ? 'text-white' : 'text-white/40 hover:text-white/70'}`}>EN</a>
+      </div>
+
   </nav>
+
+  <!-- Mobile lang toggle -->
+  <div class="md:hidden fixed top-0 left-8 z-[200] h-20 flex items-center gap-2 text-[11px] tracking-[0.22em] uppercase">
+    <a href={esUrl} class={`transition-colors duration-300 [text-shadow:0_1px_8px_rgba(0,0,0,0.5)] ${lang === 'es' ? 'text-white' : 'text-white/40'}`}>ES</a>
+    <span class="text-white/25">|</span>
+    <a href={enUrl} class={`transition-colors duration-300 [text-shadow:0_1px_8px_rgba(0,0,0,0.5)] ${lang === 'en' ? 'text-white' : 'text-white/40'}`}>EN</a>
+  </div>
 
   <!-- Hamburger / X toggle (mobile only) — z-index above mobile menu -->
   <button
     id="nav-toggle"
     class="md:hidden fixed top-0 right-8 z-[200] h-20 flex flex-col items-center justify-center gap-[5px] bg-transparent border-0 cursor-pointer text-white"
-    aria-label="Abrir menú"
+    aria-label={nav.openMenu}
     aria-controls="mobile-menu"
     aria-expanded="false"
+    data-open-label={nav.openMenu}
+    data-close-label={nav.closeMenu}
   >
     <span class="burger-line block w-[22px] h-px bg-current transition duration-[400ms] ease-in-out"></span>
     <span class="burger-line block w-[22px] h-px bg-current transition duration-[400ms] ease-in-out"></span>
@@ -59,10 +73,10 @@ const stats = [
     aria-hidden="true"
     role="dialog"
     aria-modal="true"
-    aria-label="Menú de navegación"
+    aria-label={nav.ariaNavMobile}
   >
     <ul class="flex-1 flex flex-col items-center justify-center gap-10 list-none w-full" role="list">
-      {links.map(l => (
+      {nav.links.map(l => (
         <li>
           <a
             href={l.href}
@@ -84,7 +98,7 @@ const stats = [
       <div class="flex flex-col items-center md:items-start">
         <img
           src={logo.src}
-          alt="Sadhana by Andre"
+          alt={hero.logoAlt}
           fetchpriority="high"
           loading="eager"
           decoding="async"
@@ -92,37 +106,37 @@ const stats = [
           style="animation-delay: 0.1s"
         />
         <p class="hero-item text-white/60 text-xs tracking-[0.35em] uppercase" style="animation-delay: 0.25s">
-          by andre
+          {hero.byline}
         </p>
       </div>
 
       <!-- Tagline — 2 líneas -->
       <div class="space-y-1 text-white md:text-white/80 text-center md:text-left">
         <p class="hero-item text-lg md:text-xl font-light tracking-[0.18em] uppercase [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]" style="animation-delay: 0.4s">
-          Respira · Estírate
+          {hero.tagline1}
         </p>
         <p class="hero-item text-base md:text-lg font-light tracking-[0.18em] uppercase [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]" style="animation-delay: 0.52s">
-          Fortalece tu ser interior
+          {hero.tagline2}
         </p>
       </div>
     </div>
 
     <!-- CTA -->
     <a
-      href="https://wa.me/573122861377?text=¡Hola%20Andre!%20Quiero%20saber%20más%20información%20sobre%20tus%20clases%20y%20servicios%20😊"
+      href={wa(hero.waMessage)}
       target="_blank"
       rel="noopener noreferrer"
       class="hero-item my-10 inline-flex items-center justify-center px-8 h-[52px] text-xs tracking-[0.28em] uppercase bg-primary text-white transition-opacity duration-300 hover:opacity-80"
       style="animation-delay: 0.65s"
     >
-      Reservar clase
+      {hero.cta}
     </a>
   </div>
 
   <!-- Stats bar — bottom -->
   <div class="hero-item absolute bottom-0 inset-x-0 z-10" style="animation-delay: 0.75s">
     <div class="flex divide-x divide-white/20 bg-black/30 backdrop-blur-sm">
-      {stats.map(s => (
+      {hero.stats.map(s => (
         <div class="flex-1 flex flex-col items-center justify-center py-5 px-4 gap-0.5">
           <span class="text-white text-2xl md:text-3xl font-semibold tracking-tight [text-shadow:0_1px_8px_rgba(0,0,0,0.4)]">
             {s.value}
@@ -205,13 +219,15 @@ const stats = [
 <script>
   const $toggle = document.getElementById("nav-toggle")!;
   const $menu   = document.getElementById("mobile-menu")!;
+  const openLabel  = $toggle.dataset.openLabel  ?? "Open menu";
+  const closeLabel = $toggle.dataset.closeLabel ?? "Close menu";
 
   const openMenu = () => {
     $menu.classList.add("is-open");
     $toggle.classList.add("is-open");
     $menu.setAttribute("aria-hidden", "false");
     $toggle.setAttribute("aria-expanded", "true");
-    $toggle.setAttribute("aria-label", "Cerrar menú");
+    $toggle.setAttribute("aria-label", closeLabel);
     document.body.style.overflow = "hidden";
   };
 
@@ -220,7 +236,7 @@ const stats = [
     $toggle.classList.remove("is-open");
     $menu.setAttribute("aria-hidden", "true");
     $toggle.setAttribute("aria-expanded", "false");
-    $toggle.setAttribute("aria-label", "Abrir menú");
+    $toggle.setAttribute("aria-label", openLabel);
     document.body.style.overflow = "";
   };
 

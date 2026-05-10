@@ -1,15 +1,11 @@
 ---
 import { Image } from "astro:assets";
-import photo from "../assets/images/footer.png";
+import photo from "@/assets/images/footer.png";
+import { useTranslations, getLang } from "@/i18n";
+
+const footer = useTranslations(getLang(Astro.currentLocale))("footer");
 
 const year = new Date().getFullYear();
-
-const socials = [
-  { label: "Instagram", href: "https://www.instagram.com/sadhanabyandre" },
-  { label: "Facebook",  href: "https://www.facebook.com/profile.php?id=61584988191074&locale=es_LA" },
-  { label: "TikTok",    href: "https://www.tiktok.com/@sadhanabyandre" },
-  { label: "YouTube",   href: "https://www.youtube.com/@SadhanaByAndreC" },
-];
 ---
 
 <footer class="bg-black overflow-hidden">
@@ -21,14 +17,14 @@ const socials = [
       <!-- Left: title + links -->
       <div class="pb-16 md:pb-24">
         <p class="text-[0.65rem] tracking-[0.35em] uppercase text-white/30 mb-8">
-          Conecta conmigo
+          {footer.label}
         </p>
         <h2 class="text-5xl md:text-6xl lg:text-[5.5rem] font-light leading-tight text-white mb-14">
-          Sigamos<br />en contacto
+          {footer.heading}<br />{footer.headingEm}
         </h2>
         <ul class="flex flex-col list-none">
-          {socials.map((s, i) => (
-            <li class={i < socials.length - 1 ? "border-b border-white/8" : ""}>
+          {footer.socials.map((s, i) => (
+            <li class={i < footer.socials.length - 1 ? "border-b border-white/8" : ""}>
               <a
                 href={s.href}
                 target="_blank"
@@ -63,7 +59,7 @@ const socials = [
       <div class="hidden md:block self-end">
         <Image
           src={photo}
-          alt="Andre — Sadhana by Andre"
+          alt={footer.imgAlt}
           width={560}
           height={680}
           class="w-full object-cover object-top grayscale"
@@ -77,10 +73,10 @@ const socials = [
   <div class="border-t border-white/8 px-6 md:px-12 py-6">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
       <p class="text-[0.6rem] tracking-wide text-white/20">
-        © {year} Sadhana by Andre · Todos los derechos reservados
+        {footer.copyright(year)}
       </p>
       <p class="text-[0.6rem] tracking-[0.2em] uppercase text-white/10">
-        Hecho con intención
+        {footer.tagline}
       </p>
     </div>
   </div>

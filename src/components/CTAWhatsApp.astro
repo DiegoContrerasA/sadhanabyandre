@@ -1,5 +1,10 @@
 ---
-import bgImg from "../assets/images/call.jpeg";
+import bgImg from "@/assets/images/call.jpeg";
+import { useTranslations, getLang } from "@/i18n";
+
+const cta = useTranslations(getLang(Astro.currentLocale))("cta");
+
+const wa = (msg: string) => `https://wa.me/573122861377?text=${encodeURIComponent(msg)}`;
 ---
 
 <section class="relative h-dvh flex items-center justify-center overflow-hidden">
@@ -30,30 +35,30 @@ import bgImg from "../assets/images/call.jpeg";
           <path d="M4 17v2"/><path d="M5 18H3"/>
         </svg>
         <span class=" text-xs tracking-[0.25em] uppercase text-white/80">
-          Primera clase gratuita
+          {cta.badge}
         </span>
       </div>
 
       <!-- Heading -->
       <h2 class=" text-5xl md:text-6xl lg:text-7xl font-light text-white leading-tight mb-6">
-        Reserva tu<br />
-        <em class="italic">clase de prueba</em>
+        {cta.heading}<br />
+        <em class="italic">{cta.headingEm}</em>
       </h2>
 
       <!-- Description -->
       <p class=" text-base md:text-lg text-white/80 leading-relaxed mb-10 max-w-lg mx-auto">
-        No necesitas experiencia previa. Solo un mat, ropa cómoda y las ganas de comenzar. Tu primera clase es completamente gratis.
+        {cta.body}
       </p>
 
       <!-- Buttons -->
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
         <a
-          href="https://wa.me/573122861377?text=¡Hola! Quiero hacer una clase de prueba gratuita. ¿Qué días y horarios tienes disponibles?"
+          href={wa(cta.waMessage)}
           target="_blank"
           rel="noopener noreferrer"
           class=" inline-flex items-center gap-2 text-sm tracking-widest uppercase bg-white text-primary px-10 py-4 hover:bg-white/90 transition-all duration-300"
         >
-          Reservar ahora
+          {cta.primaryBtn}
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M7 7h10v10"/><path d="M7 17 17 7"/>
           </svg>
@@ -62,7 +67,7 @@ import bgImg from "../assets/images/call.jpeg";
           href="#servicios"
           class=" text-sm tracking-widest uppercase border border-white/50 text-white px-10 py-4 hover:bg-white/10 transition-all duration-300"
         >
-          Ver servicios
+          {cta.secondaryBtn}
         </a>
       </div>
 
@@ -75,6 +80,6 @@ import bgImg from "../assets/images/call.jpeg";
   .grain-cta {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     background-size: 180px 180px;
-    
+
   }
 </style>

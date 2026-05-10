@@ -1,12 +1,15 @@
 ---
-import imgFuerza      from "../assets/images/fuerza.jpeg";
-import imgFlexibilidad from "../assets/images/flexibilidad.jpeg";
-import imgRestauracion from "../assets/images/restauracion.jpeg";
+import imgFuerza       from "@/assets/images/fuerza.jpeg";
+import imgFlexibilidad from "@/assets/images/flexibilidad.jpeg";
+import imgRestauracion from "@/assets/images/restauracion.jpeg";
+import { useTranslations, getLang } from "@/i18n";
+
+const positions = useTranslations(getLang(Astro.currentLocale))("positions");
 
 const poses = [
-  { src: imgFuerza,       alt: "Sirsasana – postura invertida",     label: "Fuerza",       tall: true  },
-  { src: imgFlexibilidad, alt: "Estiramiento lateral en exterior",   label: "Flexibilidad", tall: false },
-  { src: imgRestauracion, alt: "Estiramiento lateral en interior",   label: "Restauración", tall: false },
+  { src: imgFuerza,       ...positions.poses[0], tall: true  },
+  { src: imgFlexibilidad, ...positions.poses[1], tall: false },
+  { src: imgRestauracion, ...positions.poses[2], tall: false },
 ];
 ---
 
@@ -19,10 +22,10 @@ const poses = [
     <!-- Header -->
     <div class="text-center mb-20">
       <p data-animate class="text-[0.65rem] tracking-[0.35em] uppercase text-primary mb-4">
-        La Práctica
+        {positions.label}
       </p>
       <h2 data-animate data-delay="100" class="text-4xl md:text-5xl lg:text-6xl font-light">
-        Cada postura, <em class="italic text-primary">una conversación</em>
+        {positions.heading} <em class="italic text-primary">{positions.headingEm}</em>
       </h2>
     </div>
 

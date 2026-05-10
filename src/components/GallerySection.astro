@@ -1,35 +1,38 @@
 ---
 import { getImage } from "astro:assets";
+import { useTranslations, getLang } from "@/i18n";
 
-import img1  from "../assets/gallery/1.jpeg";
-import img2  from "../assets/gallery/2.jpeg";
-import img3  from "../assets/gallery/3.jpeg";
-import img4  from "../assets/gallery/4.jpeg";
-import img5  from "../assets/gallery/5.jpeg";
-import img6  from "../assets/gallery/6.jpeg";
-import img7  from "../assets/gallery/7.jpeg";
-import img8  from "../assets/gallery/8.jpeg";
-import img9  from "../assets/gallery/9.jpeg";
-import img10 from "../assets/gallery/10.jpeg";
-import img11 from "../assets/gallery/11.jpeg";
-import img12 from "../assets/gallery/12.jpeg";
-import img13 from "../assets/gallery/13.jpeg";
-import img14 from "../assets/gallery/14.jpeg";
-import img15 from "../assets/gallery/15.jpeg";
-import img16 from "../assets/gallery/16.jpeg";
-import img17 from "../assets/gallery/17.jpeg";
-import img18 from "../assets/gallery/18.jpeg";
-import img19 from "../assets/gallery/19.jpeg";
-import img20 from "../assets/gallery/20.jpeg";
-import img21 from "../assets/gallery/21.jpeg";
-import img22 from "../assets/gallery/22.jpeg";
-import img23 from "../assets/gallery/23.jpeg";
-import img24 from "../assets/gallery/24.jpeg";
-import img25 from "../assets/gallery/25.jpeg";
-import img26 from "../assets/gallery/26.jpeg";
-import img27 from "../assets/gallery/27.jpeg";
-import img28 from "../assets/gallery/28.jpeg";
-import img29 from "../assets/gallery/29.jpeg";
+import img1  from "@/assets/gallery/1.jpeg";
+import img2  from "@/assets/gallery/2.jpeg";
+import img3  from "@/assets/gallery/3.jpeg";
+import img4  from "@/assets/gallery/4.jpeg";
+import img5  from "@/assets/gallery/5.jpeg";
+import img6  from "@/assets/gallery/6.jpeg";
+import img7  from "@/assets/gallery/7.jpeg";
+import img8  from "@/assets/gallery/8.jpeg";
+import img9  from "@/assets/gallery/9.jpeg";
+import img10 from "@/assets/gallery/10.jpeg";
+import img11 from "@/assets/gallery/11.jpeg";
+import img12 from "@/assets/gallery/12.jpeg";
+import img13 from "@/assets/gallery/13.jpeg";
+import img14 from "@/assets/gallery/14.jpeg";
+import img15 from "@/assets/gallery/15.jpeg";
+import img16 from "@/assets/gallery/16.jpeg";
+import img17 from "@/assets/gallery/17.jpeg";
+import img18 from "@/assets/gallery/18.jpeg";
+import img19 from "@/assets/gallery/19.jpeg";
+import img20 from "@/assets/gallery/20.jpeg";
+import img21 from "@/assets/gallery/21.jpeg";
+import img22 from "@/assets/gallery/22.jpeg";
+import img23 from "@/assets/gallery/23.jpeg";
+import img24 from "@/assets/gallery/24.jpeg";
+import img25 from "@/assets/gallery/25.jpeg";
+import img26 from "@/assets/gallery/26.jpeg";
+import img27 from "@/assets/gallery/27.jpeg";
+import img28 from "@/assets/gallery/28.jpeg";
+import img29 from "@/assets/gallery/29.jpeg";
+
+const gallery = useTranslations(getLang(Astro.currentLocale))("gallery");
 
 const rawImages = [
   img1,  img2,  img3,  img4,  img5,  img6,  img7,  img8,  img9,  img10,
@@ -58,7 +61,7 @@ const photos = await Promise.all(
       fullSrc:  img.src,
       width:    img.width,
       height:   img.height,
-      alt:      `Galería Sadhana by Andre — foto ${i + 1}`,
+      alt:      gallery.imgAlt(i + 1),
       span:     spanPattern[i % spanPattern.length],
     };
   })
@@ -74,14 +77,14 @@ const photos = await Promise.all(
     <!-- Header -->
     <div class="text-center mb-16">
       <p class=" text-[0.65rem] tracking-[0.35em] uppercase text-primary mb-4">
-        Galería
+        {gallery.label}
       </p>
       <h2 class=" text-4xl md:text-5xl lg:text-6xl font-light text-dark">
-        Encuentro de<br />
-        <em class="italic text-primary">Bienestar 2026</em>
+        {gallery.heading}<br />
+        <em class="italic text-primary">{gallery.headingEm}</em>
       </h2>
       <p class=" text-base text-dark/55 mt-6 max-w-lg mx-auto leading-relaxed">
-        Imágenes del último evento realizado.
+        {gallery.body}
       </p>
     </div>
 

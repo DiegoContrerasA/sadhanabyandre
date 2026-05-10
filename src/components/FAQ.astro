@@ -1,38 +1,15 @@
 ---
-const faqs = [
-  {
-    pregunta: "¿Necesito experiencia previa para comenzar?",
-    respuesta: "No. Todas mis clases están diseñadas para recibir a personas de cualquier nivel. Si es tu primera vez, simplemente avísame antes de comenzar y adapto la práctica a ti.",
-  },
-  {
-    pregunta: "¿Qué debo llevar a mi primera clase?",
-    respuesta: "Ropa cómoda que permita movimiento, agua y ganas de estar presente. El mat es obligatorio — recuerda traer el tuyo.",
-  },
-  {
-    pregunta: "¿Cómo funciona el masaje Kobido?",
-    respuesta: "El Kobido es una sesión facial de 60 minutos donde trabajo con 47 movimientos de presión y percusión sobre los músculos del rostro. No usa inyecciones ni aparatos: solo manos expertas y aceites naturales.",
-  },
-  {
-    pregunta: "¿Las clases en línea son igual de efectivas?",
-    respuesta: "Sí. Las clases virtuales tienen la misma estructura y atención personalizada que las presenciales. Solo necesitas un espacio tranquilo, conexión estable y tu tapete.",
-  },
-  {
-    pregunta: "¿Con qué frecuencia debería practicar?",
-    respuesta: "Con dos veces por semana comienzas a sentir cambios reales. Lo más importante es la constancia, no la cantidad. Encontramos juntas el ritmo que encaja con tu vida.",
-  },
-  {
-    pregunta: "¿Puedo cancelar mi reserva?",
-    respuesta: "Sí, puedes cancelar hasta 12 horas antes de la clase sin ningún costo. Para cancelaciones tardías o ausencias, te pido avisarme por WhatsApp.",
-  },
-];
+import { useTranslations, getLang } from "@/i18n";
+
+const faq = useTranslations(getLang(Astro.currentLocale))("faq");
 
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": faqs.map(f => ({
+  "mainEntity": faq.items.map(f => ({
     "@type": "Question",
-    "name": f.pregunta,
-    "acceptedAnswer": { "@type": "Answer", "text": f.respuesta }
+    "name": f.question,
+    "acceptedAnswer": { "@type": "Answer", "text": f.answer }
   }))
 };
 ---
@@ -48,23 +25,23 @@ const faqSchema = {
     <!-- Header -->
     <div class="text-center mb-16">
       <p data-animate class=" text-[0.65rem] tracking-[0.35em] uppercase text-primary mb-4">
-        Preguntas Frecuentes
+        {faq.label}
       </p>
       <h2 data-animate data-delay="100" class="text-4xl md:text-5xl lg:text-6xl font-light text-zinc-800">
-        Preguntas <em class="italic text-primary">Frecuentes</em>
+        {faq.heading} <em class="italic text-primary">{faq.headingEm}</em>
       </h2>
     </div>
 
     <!-- Accordion -->
     <div>
-      {faqs.map((faq, i) => (
+      {faq.items.map((item, i) => (
         <div data-animate data-delay={i * 60} class="faq-item border-b border-primary/15">
           <button
             class="faq-trigger w-full flex items-center justify-between py-6 text-left gap-4 group"
             aria-expanded="false"
           >
             <span class=" text-xl md:text-2xl font-light text-zinc-800 group-hover:text-primary group-hover:translate-x-2.5 transition-all duration-300">
-              {faq.pregunta}
+              {item.question}
             </span>
             <span class="faq-icon shrink-0 w-8 h-8 rounded-full border border-primary flex items-center justify-center text-primary transition-all duration-300">
               <!-- Plus -->
@@ -80,7 +57,7 @@ const faqSchema = {
 
           <div class="faq-body overflow-hidden" style="max-height: 0; transition: max-height 0.4s cubic-bezier(0.22,1,0.36,1);">
             <p class=" text-base leading-relaxed text-zinc-500 pb-6 max-w-2xl">
-              {faq.respuesta}
+              {item.answer}
             </p>
           </div>
         </div>

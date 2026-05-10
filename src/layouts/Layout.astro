@@ -1,5 +1,7 @@
 ---
-import "../styles/global.css";
+import "@/styles/global.css";
+import { useTranslations, getLang } from "@/i18n";
+import { getAbsoluteLocaleUrl } from "astro:i18n";
 
 interface Props {
   title?: string;
@@ -7,10 +9,13 @@ interface Props {
   ogImage?: string;
 }
 
+const { ogImage = "/og.png" } = Astro.props;
+const t = useTranslations(getLang(Astro.currentLocale));
+const meta = t("_meta");
+
 const {
-  title = "Sadhana by Andre | Clases de Yoga — Grupal, Prenatal y Facial",
-  description = "Clases de yoga grupal, personalizado, prenatal, post parto y yoga facial con Andre, instructora certificada. Un espacio para reconectarte con tu cuerpo y tu esencia.",
-  ogImage = "/og-image.jpg",
+  title = meta.title,
+  description = meta.description,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -20,12 +25,18 @@ const schema = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "LocalBusiness",
+      "@type": ["LocalBusiness", "HealthAndBeautyBusiness"],
       "@id": "https://sadhanabyandre.com/#business",
       "name": "Sadhana by Andre",
-      "description": "Instructora certificada de yoga. Clases grupales, personalizadas, prenatales, post parto y yoga facial.",
+      "description": meta.description,
       "url": "https://sadhanabyandre.com",
-      "image": "https://sadhanabyandre.com/og-image.jpg",
+      "image": "https://sadhanabyandre.com/og.png",
+      "telephone": "+573122861377",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CO",
+        "addressRegion": "Colombia"
+      },
       "priceRange": "$$",
       "sameAs": [
         "https://instagram.com/sadhanabyandre",
@@ -45,14 +56,14 @@ const schema = {
       "@id": "https://sadhanabyandre.com/#website",
       "url": "https://sadhanabyandre.com",
       "name": "Sadhana by Andre",
-      "inLanguage": "es-CO"
+      "inLanguage": meta.lang
     }
   ]
 };
 ---
 
 <!doctype html>
-<html lang="es-CO">
+<html lang={meta.lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -69,10 +80,14 @@ const schema = {
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow, max-snippet:160, max-image-preview:large" />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="es" href={getAbsoluteLocaleUrl("es", "")} />
+    <link rel="alternate" hreflang="en" href={getAbsoluteLocaleUrl("en", "")} />
+    <link rel="alternate" hreflang="x-default" href={getAbsoluteLocaleUrl("es", "")} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="es_CO" />
+    <meta property="og:locale" content={meta.locale} />
+    <meta property="og:locale:alternate" content={meta.locale === "es_CO" ? "en_US" : "es_CO"} />
     <meta property="og:site_name" content="Sadhana by Andre" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
