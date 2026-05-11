@@ -1,8 +1,8 @@
 export const es = {
 
   _meta: {
-    title:       "Sadhana by Andre | Yoga Grupal, Prenatal y Facial en Colombia",
-    description: "Únete a las clases de yoga de Andre, instructora certificada. Yoga grupal, personalizado, prenatal, post parto y yoga facial. Más de 500 alumnas felices.",
+    title:       "Sadhana by Andre | Yoga en Envigado, Medellín y Sabaneta",
+    description: "Clases de yoga en Envigado con Andre, instructora certificada. Yoga grupal, prenatal, post parto y facial. Servicio presencial en el área metropolitana de Medellín y online. +500 alumnas.",
     locale:      "es_CO",
     lang:        "es-CO",
   },

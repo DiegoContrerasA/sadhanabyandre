@@ -34,9 +34,22 @@ const schema = {
       "telephone": "+573122861377",
       "address": {
         "@type": "PostalAddress",
-        "addressCountry": "CO",
-        "addressRegion": "Colombia"
+        "addressLocality": "Envigado",
+        "addressRegion": "Antioquia",
+        "addressCountry": "CO"
       },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 6.1701,
+        "longitude": -75.5937
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Envigado" },
+        { "@type": "City", "name": "Medellín" },
+        { "@type": "City", "name": "Sabaneta" },
+        { "@type": "City", "name": "Itagüí" },
+        { "@type": "City", "name": "La Estrella" }
+      ],
       "priceRange": "$$",
       "sameAs": [
         "https://instagram.com/sadhanabyandre",
@@ -79,6 +92,7 @@ const schema = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow, max-snippet:160, max-image-preview:large" />
+    <meta name="keywords" content="yoga Envigado, yoga Medellín, yoga Sabaneta, clases de yoga Medellín, estudio de yoga Envigado, yoga prenatal Medellín, yoga facial Colombia, masaje Kobido Medellín, yoga grupal Envigado, instructora de yoga Medellín" />
     <link rel="canonical" href={canonicalURL} />
     <link rel="alternate" hreflang="es" href={getAbsoluteLocaleUrl("es", "")} />
     <link rel="alternate" hreflang="en" href={getAbsoluteLocaleUrl("en", "")} />

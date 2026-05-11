@@ -1,8 +1,8 @@
 export const en = {
 
   _meta: {
-    title:       "Sadhana by Andre | Group, Prenatal and Facial Yoga in Colombia",
-    description: "Join Andre's yoga classes — certified instructor. Group, personalized, prenatal, postpartum and facial yoga. 500+ happy students.",
+    title:       "Sadhana by Andre | Yoga in Medellín, Envigado & Colombia",
+    description: "Yoga classes in Envigado (Medellín area) with Andre, certified instructor. Group, prenatal, postpartum and facial yoga. In-person & online. 500+ happy students.",
     locale:      "en_US",
     lang:        "en",
   },
