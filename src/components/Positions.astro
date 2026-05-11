@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import imgFuerza       from "@/assets/images/fuerza.jpeg";
 import imgFlexibilidad from "@/assets/images/flexibilidad.jpeg";
 import imgRestauracion from "@/assets/images/restauracion.jpeg";
@@ -33,10 +34,11 @@ const poses = [
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 items-start">
       {poses.map((p, i) => (
         <div data-animate data-delay={i * 100} class={`group relative overflow-hidden aspect-[3/4] ${i === 1 ? 'md:mt-10' : ''}`}>
-          <img
-            src={p.src.src}
+          <Image
+            src={p.src}
             alt={p.alt}
-            loading="lazy"
+            width={800}
+            height={1067}
             class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.04]"
           />
           <span class="absolute top-4 left-4 px-3 py-1 text-[10px] tracking-[0.22em] uppercase bg-primary text-white">
