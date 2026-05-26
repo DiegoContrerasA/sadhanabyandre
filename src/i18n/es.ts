@@ -82,21 +82,7 @@ export const es = {
         online:      false,
         name:        "Yoga Multinivel",
         description: "Una clase de vinyasa diseñada para adaptarse a cada persona que llega al mat. Cada práctica puede verse diferente según tu cuerpo, nivel y necesidades, creando un espacio seguro, amoroso y retador al mismo tiempo.",
-      },
-      {
-        day:         "Viernes",
-        time:        "9:00 am",
-        online:      false,
-        name:        "Masterclass",
-        description: "Cada clase se enfoca en una postura específica para que no solo aprendas a \"hacerla\", sino realmente a comprenderla. Exploramos diferentes entradas, ajustes, activaciones y alineación para cuidar el cuerpo mientras avanzas en tu práctica de forma consciente y segura.",
-      },
-      {
-        day:         "Sábado",
-        time:        "7:00 am",
-        online:      false,
-        name:        "Ashtanga Based",
-        description: "Una práctica inspirada en la estructura del Ashtanga, pero con la creatividad y fluidez del Vinyasa. Una combinación diseñada para desarrollar fuerza, resistencia, equilibrio y control corporal mientras disfrutas el movimiento.",
-      },
+      }
     ],
   },
 

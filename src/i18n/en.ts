@@ -82,21 +82,7 @@ export const en = {
         online:      false,
         name:        "Multi-level Yoga",
         description: "A vinyasa class designed to adapt to everyone who steps on the mat. Each practice can look different based on your body, level, and needs — creating a safe, loving, and challenging space all at once.",
-      },
-      {
-        day:         "Friday",
-        time:        "9:00 am",
-        online:      false,
-        name:        "Masterclass",
-        description: "Each class focuses on a specific posture so you don't just learn to \"do\" it, but truly understand it. We explore different entries, adjustments, activations, and alignment to care for the body while advancing your practice consciously and safely.",
-      },
-      {
-        day:         "Saturday",
-        time:        "7:00 am",
-        online:      false,
-        name:        "Ashtanga Based",
-        description: "A practice inspired by the Ashtanga structure, but with the creativity and fluidity of Vinyasa. A combination designed to develop strength, endurance, balance, and body control while enjoying the movement.",
-      },
+      }
     ],
   },
 
